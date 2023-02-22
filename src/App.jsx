@@ -6,15 +6,15 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="flex flex-col gap-5 justify-center items-center">
+    <div className="flex flex-col gap-5 items-center bg-gray-700 w-full h-full">
       <Modal showModal={showModal} hideModal={() => setShowModal(false)} />
 
       <button
         type="button"
-        className="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 bg-purple-600 hover:bg-purple-700 focus:ring-purple-900"
+        className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 mt-5"
         onClick={() => setShowModal(true)}
       >
-        Add new suscription
+        New suscription
       </button>
 
       <ul role="list" className="divide-y divide-gray-700 w-80">
