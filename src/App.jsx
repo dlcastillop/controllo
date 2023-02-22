@@ -1,4 +1,6 @@
-function App() {
+import Suscription from "./components/Suscription";
+
+const App = () => {
   return (
     <div className="flex flex-col gap-5 justify-center items-center">
       <button
@@ -7,8 +9,13 @@ function App() {
       >
         Add new suscription
       </button>
+
+      <ul role="list" className="divide-y divide-gray-700 w-80">
+        <Suscription id={"s"} />
+        <Suscription id={"a"} />
+      </ul>
     </div>
   );
-}
+};
 
 export default App;
