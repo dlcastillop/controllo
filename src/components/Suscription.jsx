@@ -1,6 +1,6 @@
 import optionsImg from "../images/options.svg";
 
-const Suscription = ({ service, ammount, frecuency, date, id }) => {
+const Suscription = ({ service, ammount, frecuency, date, edit, id }) => {
   const toggleMenu = () => {
     const $menu = document.querySelector("#" + id);
 
@@ -77,6 +77,9 @@ const Suscription = ({ service, ammount, frecuency, date, id }) => {
             <a
               href="#"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              onClick={() =>
+                edit({ service, ammount, frecuency, date, edit, id })
+              }
             >
               Edit
             </a>

@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const Modal = ({ showModal, hideModal }) => {
+const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
+  const [values, setValues] = useState({});
+
   useEffect(() => {
+    setValues({ ...currentData });
     const $modal = document.querySelector("#modal");
 
     if (showModal) {
@@ -25,7 +28,8 @@ const Modal = ({ showModal, hideModal }) => {
     }
   };
 
-  const addSuscription = () => {
+  const handleClick = () => {
+    const btnName = document.querySelector("#btn").innerHTML;
     const service = document.querySelector("#service").value;
     const ammount = document.querySelector("#ammount").value;
     const frecuency = document.querySelector("#frecuency").value;
@@ -37,23 +41,38 @@ const Modal = ({ showModal, hideModal }) => {
     const isAmmountReady = checkInput(ammount, $ammountSpan);
     const isDateReady = checkInput(date, $dateSpan);
 
-    if (isServiceReady && isAmmountReady && isDateReady) {
-      let data = JSON.parse(localStorage.getItem("controlloData"));
-      let newItem = {
-        service,
-        ammount,
-        frecuency,
-        date,
-      };
+    if (btnName === "Add") {
+      if (isServiceReady && isAmmountReady && isDateReady) {
+        let data = JSON.parse(localStorage.getItem("controlloData"));
+        let newItem = {
+          service,
+          ammount,
+          frecuency,
+          date,
+        };
 
-      if (data === null) {
-        data = [newItem];
-      } else {
-        data.push(newItem);
+        if (data === null) {
+          data = [newItem];
+        } else {
+          data.push(newItem);
+        }
+
+        localStorage.setItem("controlloData", JSON.stringify(data));
+        hideModal();
       }
+    } else {
+      if (isServiceReady && isAmmountReady && isDateReady) {
+        let data = JSON.parse(localStorage.getItem("controlloData"));
 
-      localStorage.setItem("controlloData", JSON.stringify(data));
-      hideModal();
+        data[parseInt(currentData.id[1])] = {
+          service,
+          ammount,
+          frecuency,
+          date,
+        };
+        localStorage.setItem("controlloData", JSON.stringify(data));
+        hideModal();
+      }
     }
   };
 
@@ -86,7 +105,7 @@ const Modal = ({ showModal, hideModal }) => {
           </button>
           <div className="px-6 py-6">
             <h3 className="mb-4 text-xl font-medium text-white">
-              New suscription service
+              {modalTexts.heading}
             </h3>
             <form className="space-y-6">
               <div>
@@ -101,6 +120,16 @@ const Modal = ({ showModal, hideModal }) => {
                   id="service"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   placeholder="Netflix"
+                  value={values.service}
+                  onChange={(e) =>
+                    setValues({
+                      service: e.target.value,
+                      ammount: values.ammount,
+                      frecuency: values.frecuency,
+                      date: values.date,
+                      id: values.id,
+                    })
+                  }
                 />
                 <span
                   className="hidden my-1 text-sm font-medium text-red-600"
@@ -122,6 +151,16 @@ const Modal = ({ showModal, hideModal }) => {
                   placeholder="10"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   min={1}
+                  value={values.ammount}
+                  onChange={(e) =>
+                    setValues({
+                      service: values.service,
+                      ammount: e.target.value,
+                      frecuency: values.frecuency,
+                      date: values.date,
+                      id: values.id,
+                    })
+                  }
                 />
                 <span
                   className="hidden my-1 text-sm font-medium text-red-600"
@@ -142,8 +181,18 @@ const Modal = ({ showModal, hideModal }) => {
                   id="frecuency"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                 >
-                  <option value="month">Monthly</option>
-                  <option value="year">Yearly</option>
+                  <option
+                    value="month"
+                    selected={values.frecuency === "month" ? true : false}
+                  >
+                    Monthly
+                  </option>
+                  <option
+                    value="year"
+                    selected={values.frecuency === "year" ? true : false}
+                  >
+                    Yearly
+                  </option>
                 </select>
               </div>
 
@@ -158,6 +207,16 @@ const Modal = ({ showModal, hideModal }) => {
                   type="date"
                   id="date"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                  value={values.date}
+                  onChange={(e) =>
+                    setValues({
+                      service: values.service,
+                      ammount: values.ammount,
+                      frecuency: values.frecuency,
+                      date: e.target.value,
+                      id: values.id,
+                    })
+                  }
                 />
                 <span
                   className="hidden my-1 text-sm font-medium text-red-600"
@@ -169,9 +228,10 @@ const Modal = ({ showModal, hideModal }) => {
               <button
                 type="button"
                 className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700"
-                onClick={addSuscription}
+                onClick={handleClick}
+                id="btn"
               >
-                Add
+                {modalTexts.button}
               </button>
             </form>
           </div>
