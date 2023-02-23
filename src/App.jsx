@@ -18,8 +18,18 @@ const App = () => {
       </button>
 
       <ul role="list" className="w-full flex flex-col items-center gap-5">
-        <Suscription id={"s"} />
-        <Suscription id={"a"} />
+        {JSON.parse(localStorage.getItem("controlloData")).map((el, index) => {
+          return (
+            <Suscription
+              service={el.service}
+              ammount={el.ammount}
+              frecuency={el.frecuency}
+              date={el.date}
+              id={"s" + index}
+              key={index}
+            />
+          );
+        })}
       </ul>
     </div>
   );
