@@ -13,6 +13,50 @@ const Modal = ({ showModal, hideModal }) => {
     }
   }, [showModal]);
 
+  const checkInput = (value, span) => {
+    if (value === "") {
+      span.classList.remove("hidden");
+      span.classList.add("block");
+      return false;
+    } else {
+      span.classList.remove("block");
+      span.classList.add("hidden");
+      return true;
+    }
+  };
+
+  const addSuscription = () => {
+    const service = document.querySelector("#service").value;
+    const ammount = document.querySelector("#ammount").value;
+    const frecuency = document.querySelector("#frecuency").value;
+    const date = document.querySelector("#date").value;
+    const $serviceSpan = document.querySelector("#serviceSpan");
+    const $ammountSpan = document.querySelector("#ammountSpan");
+    const $dateSpan = document.querySelector("#dateSpan");
+    const isServiceReady = checkInput(service, $serviceSpan);
+    const isAmmountReady = checkInput(ammount, $ammountSpan);
+    const isDateReady = checkInput(date, $dateSpan);
+
+    if (isServiceReady && isAmmountReady && isDateReady) {
+      let data = JSON.parse(localStorage.getItem("controlloData"));
+      let newItem = {
+        service,
+        ammount,
+        frecuency,
+        date,
+      };
+
+      if (data === null) {
+        data = [newItem];
+      } else {
+        data.push(newItem);
+      }
+
+      localStorage.setItem("controlloData", JSON.stringify(data));
+      hideModal();
+    }
+  };
+
   return (
     <div
       id="modal"
@@ -33,9 +77,9 @@ const Modal = ({ showModal, hideModal }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
             <span className="sr-only">Close modal</span>
@@ -47,7 +91,7 @@ const Modal = ({ showModal, hideModal }) => {
             <form className="space-y-6">
               <div>
                 <label
-                  for="service"
+                  htmlFor="service"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   Service
@@ -58,13 +102,16 @@ const Modal = ({ showModal, hideModal }) => {
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   placeholder="Netflix"
                 />
-                <span className="hidden my-1 text-sm font-medium text-red-600">
+                <span
+                  className="hidden my-1 text-sm font-medium text-red-600"
+                  id="serviceSpan"
+                >
                   You need to complete this field
                 </span>
               </div>
               <div>
                 <label
-                  for="ammount"
+                  htmlFor="ammount"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   You pay...
@@ -74,15 +121,19 @@ const Modal = ({ showModal, hideModal }) => {
                   id="ammount"
                   placeholder="10"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                  min={1}
                 />
-                <span className="hidden my-1 text-sm font-medium text-red-600">
+                <span
+                  className="hidden my-1 text-sm font-medium text-red-600"
+                  id="ammountSpan"
+                >
                   You need to complete this field
                 </span>
               </div>
 
               <div>
                 <label
-                  for="frecuency"
+                  htmlFor="frecuency"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   Frecuency
@@ -98,7 +149,7 @@ const Modal = ({ showModal, hideModal }) => {
 
               <div>
                 <label
-                  for="date"
+                  htmlFor="date"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   Next payment
@@ -108,13 +159,17 @@ const Modal = ({ showModal, hideModal }) => {
                   id="date"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                 />
-                <span className="hidden my-1 text-sm font-medium text-red-600">
+                <span
+                  className="hidden my-1 text-sm font-medium text-red-600"
+                  id="dateSpan"
+                >
                   You need to complete this field
                 </span>
               </div>
               <button
                 type="button"
                 className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700"
+                onClick={addSuscription}
               >
                 Add
               </button>
