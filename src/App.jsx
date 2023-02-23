@@ -6,7 +6,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="flex flex-col gap-5 items-center bg-gray-700 w-full h-full">
+    <div className="flex flex-col gap-5 items-center bg-gray-800 w-full h-full">
       <Modal showModal={showModal} hideModal={() => setShowModal(false)} />
 
       <button
@@ -17,7 +17,7 @@ const App = () => {
         New suscription
       </button>
 
-      <ul role="list" className="divide-y divide-gray-700 w-80">
+      <ul role="list" className="w-full flex flex-col items-center gap-5">
         <Suscription id={"s"} />
         <Suscription id={"a"} />
       </ul>

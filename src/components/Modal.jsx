@@ -19,7 +19,7 @@ const Modal = ({ showModal, hideModal }) => {
       className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4"
     >
       <div className="relative w-full h-full">
-        <div className="relative rounded-lg shadow bg-gray-800">
+        <div className="relative rounded-lg shadow bg-gray-800 border">
           <button
             type="button"
             className="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
