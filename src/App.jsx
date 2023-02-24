@@ -92,6 +92,19 @@ const App = () => {
             })
           : undefined}
       </ul>
+
+      <footer>
+        <span className="text-white text-sm">
+          by{" "}
+          <a
+            href="https://dlcastillop.com/"
+            className="text-blue-600 underline hover:no-underline"
+            target="_blank"
+          >
+            Daniel Castillo
+          </a>
+        </span>
+      </footer>
     </div>
   );
 };
