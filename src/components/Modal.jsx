@@ -192,19 +192,23 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                 <select
                   id="frecuency"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                  value={
+                    values.frecuency === "" || values.frecuency === "month"
+                      ? "month"
+                      : "year"
+                  }
+                  onChange={(e) => {
+                    setValues({
+                      service: values.service,
+                      ammount: values.ammount,
+                      frecuency: e.target.value,
+                      date: values.date,
+                      id: values.id,
+                    });
+                  }}
                 >
-                  <option
-                    value="month"
-                    selected={values.frecuency === "month" ? true : false}
-                  >
-                    Monthly
-                  </option>
-                  <option
-                    value="year"
-                    selected={values.frecuency === "year" ? true : false}
-                  >
-                    Yearly
-                  </option>
+                  <option value="month">Monthly</option>
+                  <option value="year">Yearly</option>
                 </select>
               </div>
 
