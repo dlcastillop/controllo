@@ -94,7 +94,7 @@ const App = () => {
           : undefined}
       </ul>
 
-      <footer>
+      <footer className="mb-5">
         <span className="text-white text-sm">
           by{" "}
           <a
