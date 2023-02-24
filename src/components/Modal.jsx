@@ -132,7 +132,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   id="service"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   placeholder="Netflix"
-                  value={values.service}
+                  value={values.service !== undefined ? values.service : ""}
                   onChange={(e) =>
                     setValues({
                       service: e.target.value,
@@ -163,7 +163,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   placeholder="10"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   min={1}
-                  value={values.ammount}
+                  value={values.ammount !== undefined ? values.ammount : ""}
                   onChange={(e) =>
                     setValues({
                       service: values.service,
@@ -220,7 +220,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   id="date"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
                   min={todayStr()}
-                  value={values.date}
+                  value={values.date !== undefined ? values.date : ""}
                   onChange={(e) =>
                     setValues({
                       service: values.service,
