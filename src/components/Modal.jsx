@@ -104,10 +104,10 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
             <span className="sr-only">Close modal</span>
           </button>
           <div className="px-6 py-6">
-            <h3 className="mb-4 text-xl font-medium text-white">
+            <h2 className="mb-4 text-lg font-medium text-white">
               {modalTexts.heading}
-            </h3>
-            <form className="space-y-6">
+            </h2>
+            <form className="space-y-5">
               <div>
                 <label
                   htmlFor="service"

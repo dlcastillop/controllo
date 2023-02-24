@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Suscription from "./components/Suscription";
 import Modal from "./components/Modal";
 
@@ -43,7 +43,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 items-center bg-gray-800 w-full h-full">
+    <div className="flex flex-col gap-5 items-center bg-gray-800 w-96 h-[37rem] overflow-auto">
       <Modal
         currentData={data}
         modalTexts={modalTexts}
@@ -54,7 +54,7 @@ const App = () => {
           setData({
             service: "",
             ammount: "",
-            frecuency: "",
+            frecuency: "month",
             date: "",
             id: "",
           });
@@ -65,9 +65,10 @@ const App = () => {
         }}
       />
 
+      <h2 className="mt-5 text-xl font-medium text-white">🎮 Controllo</h2>
       <button
         type="button"
-        className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 mt-5"
+        className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700"
         onClick={() => setShowModal(true)}
       >
         New suscription
