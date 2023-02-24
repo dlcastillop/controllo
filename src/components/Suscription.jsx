@@ -32,16 +32,18 @@ const Suscription = ({
     }
   }, [showModal]);
 
-  const toggleMenu = () => {
+  const showMenu = () => {
     const $menu = document.querySelector("#" + id);
 
-    if ($menu.classList.contains("hidden")) {
-      $menu.classList.remove("hidden");
-      $menu.classList.add("block");
-    } else {
-      $menu.classList.remove("block");
-      $menu.classList.add("hidden");
-    }
+    $menu.classList.remove("hidden");
+    $menu.classList.add("block");
+  };
+
+  const hideMenu = () => {
+    const $menu = document.querySelector("#" + id);
+
+    $menu.classList.remove("block");
+    $menu.classList.add("hidden");
   };
 
   const formatDate = (date) => {
@@ -94,14 +96,14 @@ const Suscription = ({
         </div>
         <div className="flex justify-center gap-3 text-base font-semibold text-gray-900">
           <p>{formatDate(date)}</p>
-          <button onClick={toggleMenu}>
+          <button onMouseOver={showMenu} onMouseLeave={hideMenu}>
             <img src={optionsImg} alt="Menu" />
           </button>
         </div>
       </div>
       <div
         id={id}
-        className="z-10 hidden relative left-64 bottom-1 bg-gray-800 divide-y divide-gray-100 rounded-lg shadow w-20 border"
+        className="z-10 hidden relative left-64 bottom-2 bg-gray-800 divide-y divide-gray-100 rounded-lg shadow w-20 border hover:block"
       >
         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
           <li
