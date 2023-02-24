@@ -16,6 +16,18 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
     }
   }, [showModal]);
 
+  const todayStr = () => {
+    const newDate = new Date();
+    const today =
+      newDate.getFullYear() +
+      "-0" +
+      (newDate.getMonth() + 1) +
+      "-" +
+      newDate.getDate();
+
+    return today;
+  };
+
   const checkInput = (value, span) => {
     if (value === "") {
       span.classList.remove("hidden");
@@ -207,6 +219,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   type="date"
                   id="date"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                  min={todayStr()}
                   value={values.date}
                   onChange={(e) =>
                     setValues({
