@@ -3,6 +3,9 @@ import Suscription from "./components/Suscription";
 import Modal from "./components/Modal";
 
 const App = () => {
+  const [allSuscription, setAllSuscriptions] = useState(
+    JSON.parse(localStorage.getItem("controlloData"))
+  );
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState({
     service: "",
@@ -25,6 +28,20 @@ const App = () => {
     });
   };
 
+  const del = (id) => {
+    let aux = JSON.parse(localStorage.getItem("controlloData"));
+    let newData = [];
+
+    for (let i = 0; i < aux.length; i++) {
+      if (i !== parseInt(id[1])) {
+        newData.push(aux[i]);
+      }
+    }
+
+    localStorage.setItem("controlloData", JSON.stringify(newData));
+    setAllSuscriptions(JSON.parse(localStorage.getItem("controlloData")));
+  };
+
   return (
     <div className="flex flex-col gap-5 items-center bg-gray-800 w-full h-full">
       <Modal
@@ -32,6 +49,7 @@ const App = () => {
         modalTexts={modalTexts}
         showModal={showModal}
         hideModal={() => {
+          setAllSuscriptions(JSON.parse(localStorage.getItem("controlloData")));
           setShowModal(false);
           setData({
             service: "",
@@ -56,22 +74,21 @@ const App = () => {
       </button>
 
       <ul className="w-full flex flex-col items-center gap-5">
-        {JSON.parse(localStorage.getItem("controlloData")) !== null
-          ? JSON.parse(localStorage.getItem("controlloData")).map(
-              (el, index) => {
-                return (
-                  <Suscription
-                    service={el.service}
-                    ammount={el.ammount}
-                    frecuency={el.frecuency}
-                    date={el.date}
-                    edit={(value) => edit(value)}
-                    id={"s" + index}
-                    key={index}
-                  />
-                );
-              }
-            )
+        {allSuscription !== null
+          ? allSuscription.map((el, index) => {
+              return (
+                <Suscription
+                  service={el.service}
+                  ammount={el.ammount}
+                  frecuency={el.frecuency}
+                  date={el.date}
+                  edit={(value) => edit(value)}
+                  del={(id) => del(id)}
+                  id={"s" + index}
+                  key={index}
+                />
+              );
+            })
           : undefined}
       </ul>
     </div>
