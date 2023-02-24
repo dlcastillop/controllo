@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import optionsImg from "../images/options.svg";
 
-const Suscription = ({ service, ammount, frecuency, date, edit, del, id }) => {
+const Suscription = ({
+  service,
+  ammount,
+  frecuency,
+  date,
+  edit,
+  del,
+  id,
+  showModal,
+}) => {
   const [bgColor, setBgColor] = useState("bg-green-500");
 
   useEffect(() => {
@@ -21,7 +30,7 @@ const Suscription = ({ service, ammount, frecuency, date, edit, del, id }) => {
     } else if (diffInDays <= 7) {
       setBgColor("bg-red-500");
     }
-  });
+  }, [showModal]);
 
   const toggleMenu = () => {
     const $menu = document.querySelector("#" + id);

@@ -87,6 +87,7 @@ const App = () => {
                   del={(id) => del(id)}
                   id={"s" + index}
                   key={index}
+                  showModal={showModal}
                 />
               );
             })
