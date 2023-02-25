@@ -2,5 +2,10 @@
   "manifest_version": 3,
   "name": "Controllo",
   "version": "0.0.0",
-  "action": { "default_popup": "index.html" }
+  "action": { "default_popup": "index.html" },
+  "icons": {
+    "16": "src/images/icon16.png",
+    "48": "src/images/icon24.png",
+    "128": "src/images/icon32.png"
+  }
 }
