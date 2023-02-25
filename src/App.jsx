@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Suscription from "./components/Suscription";
 import Modal from "./components/Modal";
 
@@ -6,6 +6,7 @@ const App = () => {
   const [allSuscription, setAllSuscriptions] = useState(
     JSON.parse(localStorage.getItem("controlloData"))
   );
+  const [bgColors, setBgColors] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState({
     service: "",
@@ -18,6 +19,34 @@ const App = () => {
     heading: "New suscription service",
     button: "Add",
   });
+
+  useEffect(() => {
+    const newDate = new Date();
+    const today =
+      newDate.getFullYear() +
+      "-" +
+      (newDate.getMonth() + 1) +
+      "-" +
+      newDate.getDate();
+    let diffInDays;
+    let aux = [];
+
+    for (let i = 0; i < allSuscription.length; i++) {
+      diffInDays =
+        (new Date(allSuscription[i].date) - new Date(today)) /
+        (1000 * 60 * 60 * 24);
+
+      if (diffInDays < 7) {
+        aux.push("bg-red-500");
+      } else if (diffInDays < 30) {
+        aux.push("bg-yellow-500");
+      } else {
+        aux.push("bg-green-500");
+      }
+    }
+
+    setBgColors(aux);
+  }, [allSuscription]);
 
   const edit = (value) => {
     setShowModal(true);
@@ -87,7 +116,7 @@ const App = () => {
                   del={(id) => del(id)}
                   id={"s" + index}
                   key={index}
-                  showModal={showModal}
+                  bgColor={bgColors[index]}
                 />
               );
             })

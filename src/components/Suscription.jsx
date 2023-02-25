@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import optionsImg from "../images/options.svg";
 
 const Suscription = ({
@@ -9,29 +8,8 @@ const Suscription = ({
   edit,
   del,
   id,
-  showModal,
+  bgColor,
 }) => {
-  const [bgColor, setBgColor] = useState("bg-green-500");
-
-  useEffect(() => {
-    const newDate = new Date();
-    const today =
-      newDate.getFullYear() +
-      "-" +
-      (newDate.getMonth() + 1) +
-      "-" +
-      newDate.getDate();
-
-    const diffInMs = new Date(date) - new Date(today);
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-    if (diffInDays < 30 && diffInDays > 7) {
-      setBgColor("bg-yellow-500");
-    } else if (diffInDays <= 7) {
-      setBgColor("bg-red-500");
-    }
-  }, [showModal]);
-
   const showMenu = () => {
     const $menu = document.querySelector("#" + id);
 
