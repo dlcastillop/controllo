@@ -13,4 +13,4 @@ Controllo is a free Chrome extension to manage your active suscriptions like Net
 
 ## Contributions
 
-Suggestions and pull requests are welcomed! Please read the [CONTRIBUTING.md](LINK) file before contributing.
+Suggestions and pull requests are welcomed! Please read the [CONTRIBUTING.md](https://github.com/dlcastillop/controllo/blob/main/CONTRIBUTING.md) file before contributing.
