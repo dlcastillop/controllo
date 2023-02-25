@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Suscription from "./components/Suscription";
 import Modal from "./components/Modal";
-import iconImg from "./images/icon.png";
 
 const App = () => {
   const [allSuscription, setAllSuscriptions] = useState(
