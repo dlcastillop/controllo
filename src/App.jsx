@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Suscription from "./components/Suscription";
 import Modal from "./components/Modal";
+import iconImg from "./images/icon.png";
 
 const App = () => {
   const [allSuscription, setAllSuscriptions] = useState(
@@ -94,7 +95,7 @@ const App = () => {
         }}
       />
 
-      <h2 className="mt-5 text-xl font-medium text-white">🎮 Controllo</h2>
+      <h1 className="mt-5 text-xl font-medium text-white">🎮 Controllo</h1>
       <button
         type="button"
         className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700"
