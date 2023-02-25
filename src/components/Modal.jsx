@@ -88,6 +88,19 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
     }
   };
 
+  const closeModal = () => {
+    const errorSpans = document.querySelectorAll(".error-span");
+
+    for (let i = 0; i < errorSpans.length; i++) {
+      if (errorSpans[i].classList.contains("block")) {
+        errorSpans[i].classList.remove("block");
+        errorSpans[i].classList.add("hidden");
+      }
+    }
+
+    hideModal();
+  };
+
   return (
     <div
       id="modal"
@@ -98,7 +111,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
           <button
             type="button"
             className="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
-            onClick={() => hideModal()}
+            onClick={() => closeModal()}
           >
             <svg
               aria-hidden="true"
@@ -144,7 +157,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   }
                 />
                 <span
-                  className="hidden my-1 text-sm font-medium text-red-600"
+                  className="hidden my-1 text-sm font-medium text-red-600 error-span"
                   id="serviceSpan"
                 >
                   You need to complete this field
@@ -175,7 +188,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   }
                 />
                 <span
-                  className="hidden my-1 text-sm font-medium text-red-600"
+                  className="hidden my-1 text-sm font-medium text-red-600 error-span"
                   id="ammountSpan"
                 >
                   You need to complete this field
@@ -236,7 +249,7 @@ const Modal = ({ currentData, modalTexts, showModal, hideModal }) => {
                   }
                 />
                 <span
-                  className="hidden my-1 text-sm font-medium text-red-600"
+                  className="hidden my-1 text-sm font-medium text-red-600 error-span"
                   id="dateSpan"
                 >
                   You need to complete this field
