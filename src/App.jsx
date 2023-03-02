@@ -4,7 +4,7 @@ import Modal from "./components/Modal";
 
 const App = () => {
   const [allSuscription, setAllSuscriptions] = useState(
-    JSON.parse(localStorage.getItem("controlloData"))
+    JSON.parse(localStorage.getItem("controlloData")) || []
   );
   const [bgColors, setBgColors] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -104,23 +104,21 @@ const App = () => {
       </button>
 
       <ul className="w-full flex flex-col items-center gap-5">
-        {allSuscription !== null
-          ? allSuscription.map((el, index) => {
-              return (
-                <Suscription
-                  service={el.service}
-                  ammount={el.ammount}
-                  frecuency={el.frecuency}
-                  date={el.date}
-                  edit={(value) => edit(value)}
-                  del={(id) => del(id)}
-                  id={"s" + index}
-                  key={index}
-                  bgColor={bgColors[index]}
-                />
-              );
-            })
-          : undefined}
+        {allSuscription.map((el, index) => {
+          return (
+            <Suscription
+              service={el.service}
+              ammount={el.ammount}
+              frecuency={el.frecuency}
+              date={el.date}
+              edit={(value) => edit(value)}
+              del={(id) => del(id)}
+              id={"s" + index}
+              key={index}
+              bgColor={bgColors[index]}
+            />
+          );
+        })}
       </ul>
 
       <footer className="mb-5">
