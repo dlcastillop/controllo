@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Controllo",
+  "description": "Track your active suscriptions like Netflix, Twitter Blue or any similar service with a suscription model",
   "version": "0.1.0",
   "action": { "default_popup": "index.html" },
   "icons": {
     "16": "src/images/icon16.png",
-    "48": "src/images/icon24.png",
-    "128": "src/images/icon32.png"
+    "48": "src/images/icon48.png",
+    "128": "src/images/icon128.png"
   }
 }
