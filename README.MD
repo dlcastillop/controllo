@@ -1,6 +1,6 @@
 # 🎮 Controllo
 
-Controllo is a free Chrome extension to track your active suscriptions like Netflix, Twitter Blue or any similar service with a suscription model.
+Controllo is a free Chrome extension that helps you always stay updated on the status of all your subscriptions in one place.
 
 ## Features
 
