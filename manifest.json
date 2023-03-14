@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Controllo",
-  "description": "Always stay updated on the status of all your subscriptions in one place.",
+  "description": "Controllo is a free Chrome extension that allows you to manually add all the services you subscribe to and helps you keep up to date when each one expires through color code.",
   "version": "0.1.0",
   "action": { "default_popup": "index.html" },
   "icons": {

@@ -1,10 +1,10 @@
 # 🎮 Controllo
 
-Controllo is a free Chrome extension that helps you always stay updated on the status of all your subscriptions in one place.
+Controllo is a free Chrome extension that allows you to manually add all the services you subscribe to and helps you keep up to date when each one expires through color code.
 
 ## Features
 
-- ✅ Add, edit and delete all your active suscriptions
+- ✅ Add, edit and delete manually all your active suscriptions
 - ✅ Set the name, how much you pay, the payment frecuency and the date of the next payment of each suscription
 - ✅ Color code to alert how much time is left for the next payment date:
   - 🟥 Red if less than 7 days left
