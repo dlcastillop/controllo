@@ -1,6 +1,6 @@
 const Suscription = () => {
   return (
-    <li className="w-full p-3 h-16 rounded bg-success text-success-content">
+    <li className="w-full p-3 h-16 rounded bg-success text-success-content hover:scale-105 ease-in-out duration-700">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium truncate">Netflix</p>
