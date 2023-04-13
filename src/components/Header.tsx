@@ -1,4 +1,4 @@
-function Header() {
+const Header = () => {
   return (
     <header>
       <div className="navbar bg-base-100">
