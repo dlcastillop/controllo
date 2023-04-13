@@ -26,7 +26,7 @@ const Suscription = () => {
                 <label htmlFor="modal">Edit</label>
               </li>
               <li>
-                <label htmlFor="modal">Delete</label>
+                <a href="#">Delete</a>
               </li>
             </ul>
           </div>

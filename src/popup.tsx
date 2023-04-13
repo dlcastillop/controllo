@@ -8,7 +8,7 @@ const IndexPopup = () => {
   return (
     <div className="w-96 h-96">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
-        {/* <Header /> */}
+        <Header />
         <button className="btn btn-sm btn-primary rounded">
           <svg
             xmlns="http://www.w3.org/2000/svg"
