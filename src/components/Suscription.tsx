@@ -6,8 +6,8 @@ const Suscription = () => {
           <p className="text-sm font-medium truncate">Netflix</p>
           <p className="text-sm truncate">$20/month</p>
         </div>
-        <div className="flex justify-center gap-3 text-base font-semibold">
-          <p>24/2/23</p>
+        <div className="flex justify-center gap-3">
+          <p className="text-sm font-medium">24/2/23</p>
           <button>
             <img src="" alt="Menu" />
           </button>
