@@ -1,4 +1,5 @@
 import Header from "~components/Header"
+import Modal from "~components/Modal"
 import Suscription from "~components/Suscription"
 
 import "./styles.css"
@@ -23,6 +24,7 @@ const IndexPopup = () => {
           <Suscription />
         </ul>
       </div>
+      <Modal />
     </div>
   )
 }

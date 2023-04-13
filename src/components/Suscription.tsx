@@ -23,10 +23,10 @@ const Suscription = () => {
               tabIndex={0}
               className="dropdown-content menu p-2 shadow bg-base-100 rounded text-base-content text-sm">
               <li>
-                <a>Edit</a>
+                <label htmlFor="modal">Edit</label>
               </li>
               <li>
-                <a>Delete</a>
+                <label htmlFor="modal">Delete</label>
               </li>
             </ul>
           </div>
