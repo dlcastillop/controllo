@@ -8,28 +8,28 @@ const Suscription = () => {
         </div>
         <div className="flex justify-center gap-3">
           <p className="text-sm font-medium">24/2/23</p>
-          <button>
-            <img src="" alt="Menu" />
-          </button>
+          <div className="dropdown dropdown-hover dropdown-left">
+            <label tabIndex={0}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24">
+                <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded text-base-content text-sm">
+              <li>
+                <a>Edit</a>
+              </li>
+              <li>
+                <a>Delete</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className="z-10 hidden relative left-64 bottom-2 bg-gray-800 divide-y divide-gray-100 rounded-lg shadow w-20 border hover:block">
-        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-              Edit
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-              Delete
-            </a>
-          </li>
-        </ul>
       </div>
     </li>
   )
