@@ -1,4 +1,4 @@
-const Suscription = () => {
+const Suscription = ({ setModal }) => {
   return (
     <li className="w-full p-3 h-16 rounded bg-success text-success-content hover:scale-105 ease-in-out duration-500">
       <div className="flex items-center justify-between">
@@ -23,7 +23,16 @@ const Suscription = () => {
               tabIndex={0}
               className="dropdown-content menu p-2 shadow bg-neutral text-neutral-content rounded text-sm">
               <li>
-                <label htmlFor="modal">Edit</label>
+                <label
+                  htmlFor="modal"
+                  onClick={() =>
+                    setModal({
+                      title: "Edit service",
+                      action: "Save"
+                    })
+                  }>
+                  Edit
+                </label>
               </li>
               <li>
                 <a href="#">Delete</a>

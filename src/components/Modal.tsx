@@ -1,10 +1,10 @@
-const Modal = () => {
+const Modal = ({ title, action }) => {
   return (
     <>
       <input type="checkbox" id="modal" className="modal-toggle visible" />
       <div className="modal rounded">
         <div className="modal-box bg-neutral text-neutral-content">
-          <h3 className="font-bold text-lg mb-5">New service</h3>
+          <h3 className="font-bold text-lg mb-5">{title}</h3>
           <div className="form-control w-full max-w-xs gap-5">
             <div>
               <input
@@ -49,7 +49,7 @@ const Modal = () => {
           </div>
           <div className="modal-action justify-center">
             <label htmlFor="modal" className="btn btn-primary rounded">
-              Add
+              {action}
             </label>
           </div>
         </div>
