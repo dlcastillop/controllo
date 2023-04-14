@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+import { Storage } from "@plasmohq/storage"
 
 import Header from "~components/Header"
 import Modal from "~components/Modal"
@@ -7,7 +9,17 @@ import Suscription from "~components/Suscription"
 import "./styles.css"
 
 const IndexPopup = () => {
+  const storage = new Storage()
   const [modal, setModal] = useState({ title: "", action: "" })
+  const [controlloData, setControlloData] = useState([])
+
+  useEffect(() => {
+    async function getControlloData() {
+      setControlloData(await storage.get("controlloData"))
+    }
+
+    getControlloData()
+  })
 
   return (
     <div className="w-96 h-96 max-h-96 overflow-y-auto">
@@ -33,7 +45,17 @@ const IndexPopup = () => {
           </svg>
         </label>
         <ul className="flex flex-col items-center gap-5 w-full">
-          <Suscription setModal={(modal) => setModal({ ...modal })} />
+          {typeof controlloData === "undefined"
+            ? undefined
+            : controlloData.map((el: Object, i: Number) => {
+                return (
+                  <Suscription
+                    data={el}
+                    setModal={(modal: any) => setModal({ ...modal })}
+                    key={i.toString()}
+                  />
+                )
+              })}
         </ul>
       </div>
       <Modal title={modal.title} action={modal.action} />

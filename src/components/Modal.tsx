@@ -35,6 +35,7 @@ const Modal = ({ title, action }) => {
       "#amount-label"
     ) as HTMLInputElement
     const $dateLabel = document.querySelector("#date-label") as HTMLInputElement
+    const $modal = document.getElementById("modal") as HTMLInputElement
 
     const isService = checkInput(service, $serviceLabel)
     const isAmount = checkInput(amount, $amountLabel)
@@ -53,6 +54,8 @@ const Modal = ({ title, action }) => {
           { service, amount, frecuency, date }
         ])
       }
+
+      $modal.checked = false
     }
   }
 
