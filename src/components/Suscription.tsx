@@ -21,7 +21,7 @@ const Suscription = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded text-base-content text-sm">
+              className="dropdown-content menu p-2 shadow bg-neutral text-neutral-content rounded text-sm">
               <li>
                 <label htmlFor="modal">Edit</label>
               </li>
