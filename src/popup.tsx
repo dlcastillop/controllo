@@ -6,7 +6,7 @@ import "./styles.css"
 
 const IndexPopup = () => {
   return (
-    <div className="w-96 h-96">
+    <div className="w-96 h-96 max-h-96 overflow-y-auto">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
         <Header />
         <label htmlFor="modal" className="btn btn-sm btn-primary rounded">
