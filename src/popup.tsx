@@ -9,7 +9,7 @@ const IndexPopup = () => {
     <div className="w-96 h-96">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
         <Header />
-        <button className="btn btn-sm btn-primary rounded">
+        <label htmlFor="modal" className="btn btn-sm btn-primary rounded">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -19,7 +19,7 @@ const IndexPopup = () => {
             className="text-white">
             <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
           </svg>
-        </button>
+        </label>
         <ul className="flex flex-col items-center gap-5 w-full">
           <Suscription />
         </ul>
