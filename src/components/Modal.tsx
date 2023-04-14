@@ -3,14 +3,14 @@ const Modal = () => {
     <>
       <input type="checkbox" id="modal" className="modal-toggle visible" />
       <div className="modal rounded">
-        <div className="modal-box">
+        <div className="modal-box bg-neutral text-neutral-content">
           <h3 className="font-bold text-lg mb-5">New service</h3>
           <div className="form-control w-full max-w-xs gap-5">
             <div>
               <input
                 type="text"
-                placeholder="Service name"
-                className="input input-bordered w-full max-w-xs"
+                placeholder="What is the service name?"
+                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
               />
               <label className="label hidden">
                 <span className="label-text-alt">Error</span>
@@ -20,8 +20,8 @@ const Modal = () => {
             <div>
               <input
                 type="number"
-                placeholder="Amount you pay"
-                className="input input-bordered w-full max-w-xs"
+                placeholder="How much you pay?"
+                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 min={0}
               />
               <label className="label hidden">
@@ -30,7 +30,7 @@ const Modal = () => {
             </div>
 
             <div>
-              <select className="select select-bordered w-full max-w-xs">
+              <select className="select select-bordered select-primary w-full max-w-xs bg-neutral-focus text-neutral-content">
                 <option>Monthly</option>
                 <option>Yearly</option>
               </select>
@@ -39,7 +39,7 @@ const Modal = () => {
             <div>
               <input
                 type="date"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 min={0}
               />
               <label className="label hidden">
@@ -47,9 +47,9 @@ const Modal = () => {
               </label>
             </div>
           </div>
-          <div className="modal-action">
-            <label htmlFor="modal" className="btn">
-              Create
+          <div className="modal-action justify-center">
+            <label htmlFor="modal" className="btn btn-primary rounded">
+              Add
             </label>
           </div>
         </div>
