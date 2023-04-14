@@ -1,3 +1,5 @@
+import { Storage } from "@plasmohq/storage"
+
 const Modal = ({ title, action }) => {
   const checkInput = (value: String | Number, label: HTMLInputElement) => {
     if (value === "") {
@@ -11,12 +13,18 @@ const Modal = ({ title, action }) => {
     }
   }
 
-  const handleClick = () => {
+  async function handleClick() {
+    const storage = new Storage()
+
     const service = (
       document.querySelector("#service-input") as HTMLInputElement
     ).value
     const amount = (document.querySelector("#amount-input") as HTMLInputElement)
       .value
+    const frecuency = (
+      document.querySelector("#frecuency-input") as HTMLInputElement
+    ).value
+
     const date = (document.querySelector("#date-input") as HTMLInputElement)
       .value
 
@@ -32,8 +40,19 @@ const Modal = ({ title, action }) => {
     const isAmount = checkInput(amount, $amountLabel)
     const isDate = checkInput(date, $dateLabel)
 
-    if (isService && isAmount && isDate) {
-      //Hacer algo
+    if (isService && isAmount && isDate && action === "Add") {
+      const controlloData = await storage.get("controlloData")
+
+      if (controlloData === undefined) {
+        await storage.set("controlloData", [
+          { service, amount, frecuency, date }
+        ])
+      } else {
+        await storage.set("controlloData", [
+          ...controlloData,
+          { service, amount, frecuency, date }
+        ])
+      }
     }
   }
 
@@ -74,9 +93,11 @@ const Modal = ({ title, action }) => {
             </div>
 
             <div>
-              <select className="select select-bordered select-primary w-full max-w-xs bg-neutral-focus text-neutral-content">
-                <option>Monthly</option>
-                <option>Yearly</option>
+              <select
+                className="select select-bordered select-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                id="frecuency-input">
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly</option>
               </select>
             </div>
 
