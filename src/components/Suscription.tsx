@@ -1,4 +1,41 @@
 const Suscription = ({ del, edit, data, id }) => {
+  const formatDate = (date) => {
+    let formatedDate = ""
+    let year = date[0] + date[1] + date[2] + date[3]
+    let month = date[5] + date[6]
+    let day = date[8] + date[9]
+
+    if (month === "01") {
+      formatedDate += "Jan"
+    } else if (month === "02") {
+      formatedDate += "Feb"
+    } else if (month === "03") {
+      formatedDate += "Mar"
+    } else if (month === "04") {
+      formatedDate += "Apr"
+    } else if (month === "05") {
+      formatedDate += "May"
+    } else if (month === "06") {
+      formatedDate += "Jun"
+    } else if (month === "07") {
+      formatedDate += "Jul"
+    } else if (month === "08") {
+      formatedDate += "Aug"
+    } else if (month === "09") {
+      formatedDate += "Sep"
+    } else if (month === "10") {
+      formatedDate += "Oct"
+    } else if (month === "11") {
+      formatedDate += "Nov"
+    } else if (month === "12") {
+      formatedDate += "Dec"
+    }
+
+    formatedDate = formatedDate + " " + day + ", " + year
+
+    return formatedDate
+  }
+
   return (
     <li className="w-full p-3 h-16 rounded bg-success text-success-content hover:scale-105 ease-in-out duration-500">
       <div className="flex items-center justify-between">
@@ -7,7 +44,7 @@ const Suscription = ({ del, edit, data, id }) => {
           <p className="text-sm truncate">{`$${data.amount}/${data.frecuency}`}</p>
         </div>
         <div className="flex justify-center gap-3 items-center">
-          <p className="text-sm font-medium">{data.date}</p>
+          <p className="text-sm font-medium">{formatDate(data.date)}</p>
           <div className="dropdown dropdown-hover dropdown-left">
             <label tabIndex={id}>
               <svg
