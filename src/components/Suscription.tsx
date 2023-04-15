@@ -1,4 +1,29 @@
+import { useEffect, useState } from "react"
+
 const Suscription = ({ del, edit, data, id }) => {
+  const [color, setColor] = useState("")
+
+  useEffect(() => {
+    const newDate = new Date()
+    const today: string =
+      newDate.getFullYear() +
+      "-" +
+      (newDate.getMonth() + 1) +
+      "-" +
+      newDate.getDate()
+    const diffInDays =
+      (new Date(data.date).getTime() - new Date(today).getTime()) /
+      (1000 * 60 * 60 * 24)
+
+    if (diffInDays <= 7) {
+      setColor("bg-error text-error-content")
+    } else if (diffInDays <= 30) {
+      setColor("bg-warning text-warning-content")
+    } else {
+      setColor("bg-success text-success-content")
+    }
+  }, [id])
+
   const formatDate = (date) => {
     let formatedDate = ""
     let year = date[0] + date[1] + date[2] + date[3]
@@ -37,7 +62,11 @@ const Suscription = ({ del, edit, data, id }) => {
   }
 
   return (
-    <li className="w-full p-3 h-16 rounded bg-success text-success-content hover:scale-105 ease-in-out duration-500">
+    <li
+      className={
+        "w-full p-3 h-16 rounded hover:scale-105 ease-in-out duration-500 " +
+        color
+      }>
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium truncate">{data.service}</p>
