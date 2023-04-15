@@ -1,6 +1,59 @@
+import { useEffect, useState } from "react"
+
 import { Storage } from "@plasmohq/storage"
 
-const Modal = ({ title, action }) => {
+const Modal = ({ title, action, id }) => {
+  const storage = new Storage()
+
+  const $serviceInput = document.querySelector(
+    "#service-input"
+  ) as HTMLInputElement
+  const $amountInput = document.querySelector(
+    "#amount-input"
+  ) as HTMLInputElement
+  const $frecuencyInput = document.querySelector(
+    "#frecuency-input"
+  ) as HTMLInputElement
+  const $dateInput = document.querySelector("#date-input") as HTMLInputElement
+  const $modal = document.getElementById("modal") as HTMLInputElement
+
+  const [controlloData, setControlloData] = useState([])
+  const [values, setValues] = useState({
+    service: "",
+    amount: "",
+    frecuency: "monthly",
+    date: ""
+  })
+
+  useEffect(() => {
+    async function getControlloData() {
+      setControlloData(await storage.get("controlloData"))
+
+      if (id !== -1) {
+        setValues({
+          service: controlloData[id].service,
+          amount: controlloData[id].amount,
+          frecuency: controlloData[id].frecuency,
+          date: controlloData[id].date
+        })
+      }
+    }
+
+    getControlloData()
+  }, [id])
+
+  const todayStr = () => {
+    const newDate = new Date()
+    const today =
+      newDate.getFullYear() +
+      "-0" +
+      (newDate.getMonth() + 1) +
+      "-" +
+      newDate.getDate()
+
+    return today
+  }
+
   const checkInput = (value: String | Number, label: HTMLInputElement) => {
     if (value === "") {
       label.classList.remove("hidden")
@@ -13,20 +66,19 @@ const Modal = ({ title, action }) => {
     }
   }
 
+  const resetModal = () => {
+    $serviceInput.value = ""
+    $amountInput.value = ""
+    $frecuencyInput.value = "monthly"
+    $dateInput.value = ""
+    $modal.checked = false
+  }
+
   async function handleClick() {
-    const storage = new Storage()
-
-    const service = (
-      document.querySelector("#service-input") as HTMLInputElement
-    ).value
-    const amount = (document.querySelector("#amount-input") as HTMLInputElement)
-      .value
-    const frecuency = (
-      document.querySelector("#frecuency-input") as HTMLInputElement
-    ).value
-
-    const date = (document.querySelector("#date-input") as HTMLInputElement)
-      .value
+    const service = $serviceInput.value
+    const amount = $amountInput.value
+    const frecuency = $frecuencyInput.value
+    const date = $dateInput.value
 
     const $serviceLabel = document.querySelector(
       "#service-label"
@@ -35,15 +87,12 @@ const Modal = ({ title, action }) => {
       "#amount-label"
     ) as HTMLInputElement
     const $dateLabel = document.querySelector("#date-label") as HTMLInputElement
-    const $modal = document.getElementById("modal") as HTMLInputElement
 
     const isService = checkInput(service, $serviceLabel)
     const isAmount = checkInput(amount, $amountLabel)
     const isDate = checkInput(date, $dateLabel)
 
     if (isService && isAmount && isDate && action === "Add") {
-      const controlloData = await storage.get("controlloData")
-
       if (controlloData === undefined) {
         await storage.set("controlloData", [
           { service, amount, frecuency, date }
@@ -55,7 +104,21 @@ const Modal = ({ title, action }) => {
         ])
       }
 
-      $modal.checked = false
+      resetModal()
+    } else if (isService && isAmount && isDate && action === "Save") {
+      let aux = []
+
+      for (let i = 0; i < controlloData.length; i++) {
+        if (i !== id) {
+          aux.push(controlloData[i])
+        } else {
+          aux.push(values)
+        }
+      }
+
+      await storage.set("controlloData", aux)
+
+      resetModal()
     }
   }
 
@@ -69,9 +132,14 @@ const Modal = ({ title, action }) => {
             <div>
               <input
                 type="text"
+                name="service"
                 placeholder="What is the service name?"
                 className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 id="service-input"
+                value={values.service}
+                onChange={(e) =>
+                  setValues({ ...values, service: e.target.value })
+                }
               />
               <label className="label hidden p-0.5" id="service-label">
                 <span className="label-text-alt text-red-600">
@@ -87,6 +155,10 @@ const Modal = ({ title, action }) => {
                 className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 min={0}
                 id="amount-input"
+                value={values.amount}
+                onChange={(e) =>
+                  setValues({ ...values, amount: e.target.value })
+                }
               />
               <label className="label hidden p-0.5" id="amount-label">
                 <span className="label-text-alt text-red-600">
@@ -98,7 +170,11 @@ const Modal = ({ title, action }) => {
             <div>
               <select
                 className="select select-bordered select-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
-                id="frecuency-input">
+                id="frecuency-input"
+                value={values.frecuency}
+                onChange={(e) =>
+                  setValues({ ...values, frecuency: e.target.value })
+                }>
                 <option value="monthly">Monthly</option>
                 <option value="yearly">Yearly</option>
               </select>
@@ -108,8 +184,10 @@ const Modal = ({ title, action }) => {
               <input
                 type="date"
                 className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
-                min={0}
+                min={todayStr()}
                 id="date-input"
+                value={values.date}
+                onChange={(e) => setValues({ ...values, date: e.target.value })}
               />
               <label className="label hidden p-0.5" id="date-label">
                 <span className="label-text-alt text-red-600">

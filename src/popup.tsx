@@ -10,7 +10,7 @@ import "./styles.css"
 
 const IndexPopup = () => {
   const storage = new Storage()
-  const [modal, setModal] = useState({ title: "", action: "" })
+  const [modal, setModal] = useState({ title: "", action: "", id: -1 })
   const [controlloData, setControlloData] = useState([])
 
   useEffect(() => {
@@ -41,12 +41,13 @@ const IndexPopup = () => {
         <label
           htmlFor="modal"
           className="btn btn-sm btn-primary rounded"
-          onClick={() => {
+          onClick={() =>
             setModal({
               title: "New service",
-              action: "Add"
+              action: "Add",
+              id: -1
             })
-          }}>
+          }>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -65,15 +66,21 @@ const IndexPopup = () => {
                   <Suscription
                     data={el}
                     id={i}
-                    setModal={(modal: any) => setModal({ ...modal })}
                     del={(id: Number) => del(id)}
+                    edit={(id: number) =>
+                      setModal({
+                        title: "Edit service",
+                        action: "Save",
+                        id
+                      })
+                    }
                     key={i.toString()}
                   />
                 )
               })}
         </ul>
       </div>
-      <Modal title={modal.title} action={modal.action} />
+      <Modal title={modal.title} action={modal.action} id={modal.id} />
     </div>
   )
 }
