@@ -21,6 +21,19 @@ const IndexPopup = () => {
     getControlloData()
   })
 
+  async function del(id: Number) {
+    let aux = []
+
+    for (let i = 0; i < controlloData.length; i++) {
+      if (i !== id) {
+        aux.push(controlloData[i])
+      }
+    }
+
+    await storage.set("controlloData", aux)
+    setControlloData(aux)
+  }
+
   return (
     <div className="w-96 h-96 max-h-96 overflow-y-auto">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
@@ -51,7 +64,9 @@ const IndexPopup = () => {
                 return (
                   <Suscription
                     data={el}
+                    id={i}
                     setModal={(modal: any) => setModal({ ...modal })}
+                    del={(id: Number) => del(id)}
                     key={i.toString()}
                   />
                 )

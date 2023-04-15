@@ -1,4 +1,4 @@
-const Suscription = ({ setModal, data }) => {
+const Suscription = ({ setModal, del, data, id }) => {
   return (
     <li className="w-full p-3 h-16 rounded bg-success text-success-content hover:scale-105 ease-in-out duration-500">
       <div className="flex items-center justify-between">
@@ -9,7 +9,7 @@ const Suscription = ({ setModal, data }) => {
         <div className="flex justify-center gap-3 items-center">
           <p className="text-sm font-medium">{data.date}</p>
           <div className="dropdown dropdown-hover dropdown-left">
-            <label tabIndex={0}>
+            <label tabIndex={id}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -20,7 +20,7 @@ const Suscription = ({ setModal, data }) => {
               </svg>
             </label>
             <ul
-              tabIndex={0}
+              tabIndex={id}
               className="dropdown-content menu p-2 shadow bg-neutral text-neutral-content rounded text-sm">
               <li>
                 <label
@@ -35,7 +35,9 @@ const Suscription = ({ setModal, data }) => {
                 </label>
               </li>
               <li>
-                <a href="#">Delete</a>
+                <a href="#" onClick={() => del(id)}>
+                  Delete
+                </a>
               </li>
             </ul>
           </div>
