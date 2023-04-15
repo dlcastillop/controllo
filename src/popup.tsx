@@ -12,6 +12,7 @@ const IndexPopup = () => {
   const storage = new Storage()
   const [modal, setModal] = useState({ title: "", action: "", id: -1 })
   const [controlloData, setControlloData] = useState([])
+  const [update, setUpdate] = useState(false)
 
   useEffect(() => {
     async function getControlloData() {
@@ -19,7 +20,7 @@ const IndexPopup = () => {
     }
 
     getControlloData()
-  })
+  }, [update])
 
   async function del(id: Number) {
     let aux = []
@@ -32,6 +33,7 @@ const IndexPopup = () => {
 
     await storage.set("controlloData", aux)
     setControlloData(aux)
+    setUpdate(!update)
   }
 
   return (
@@ -80,7 +82,12 @@ const IndexPopup = () => {
               })}
         </ul>
       </div>
-      <Modal title={modal.title} action={modal.action} id={modal.id} />
+      <Modal
+        title={modal.title}
+        action={modal.action}
+        id={modal.id}
+        updateSuscription={() => setUpdate(!update)}
+      />
     </div>
   )
 }

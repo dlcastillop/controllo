@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import { Storage } from "@plasmohq/storage"
 
-const Modal = ({ title, action, id }) => {
+const Modal = ({ title, action, id, updateSuscription }) => {
   const storage = new Storage()
 
   const $serviceInput = document.querySelector(
@@ -66,12 +66,13 @@ const Modal = ({ title, action, id }) => {
     }
   }
 
-  const resetModal = () => {
+  const closeModal = () => {
     $serviceInput.value = ""
     $amountInput.value = ""
     $frecuencyInput.value = "monthly"
     $dateInput.value = ""
     $modal.checked = false
+    updateSuscription()
   }
 
   async function handleClick() {
@@ -104,7 +105,7 @@ const Modal = ({ title, action, id }) => {
         ])
       }
 
-      resetModal()
+      closeModal()
     } else if (isService && isAmount && isDate && action === "Save") {
       let aux = []
 
@@ -118,7 +119,7 @@ const Modal = ({ title, action, id }) => {
 
       await storage.set("controlloData", aux)
 
-      resetModal()
+      closeModal()
     }
   }
 
