@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 
-import { Storage } from "@plasmohq/storage"
+import useGetControlloData from "~hooks/useGetControlloData"
+import useSetControlloData from "~hooks/useSetControlloData"
 
 const Modal = ({ title, action, id, updateSuscription }) => {
-  const storage = new Storage()
-
   const $serviceInput = document.querySelector(
     "#service-input"
   ) as HTMLInputElement
@@ -17,7 +16,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
   const $dateInput = document.querySelector("#date-input") as HTMLInputElement
   const $modal = document.getElementById("modal") as HTMLInputElement
 
-  const [controlloData, setControlloData] = useState([])
+  const controlloData = useGetControlloData(id)
   const [values, setValues] = useState({
     service: "",
     amount: "",
@@ -26,20 +25,14 @@ const Modal = ({ title, action, id, updateSuscription }) => {
   })
 
   useEffect(() => {
-    async function getControlloData() {
-      setControlloData(await storage.get("controlloData"))
-
-      if (id !== -1) {
-        setValues({
-          service: controlloData[id].service,
-          amount: controlloData[id].amount,
-          frecuency: controlloData[id].frecuency,
-          date: controlloData[id].date
-        })
-      }
+    if (id !== -1) {
+      setValues({
+        service: controlloData[id].service,
+        amount: controlloData[id].amount,
+        frecuency: controlloData[id].frecuency,
+        date: controlloData[id].date
+      })
     }
-
-    getControlloData()
   }, [id])
 
   const todayStr = () => {
@@ -95,11 +88,9 @@ const Modal = ({ title, action, id, updateSuscription }) => {
 
     if (isService && isAmount && isDate && action === "Add") {
       if (controlloData === undefined) {
-        await storage.set("controlloData", [
-          { service, amount, frecuency, date }
-        ])
+        useSetControlloData([{ service, amount, frecuency, date }])
       } else {
-        await storage.set("controlloData", [
+        useSetControlloData([
           ...controlloData,
           { service, amount, frecuency, date }
         ])
@@ -117,7 +108,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
         }
       }
 
-      await storage.set("controlloData", aux)
+      useSetControlloData(aux)
 
       closeModal()
     }

@@ -1,28 +1,19 @@
-import { useEffect, useState } from "react"
-
-import { Storage } from "@plasmohq/storage"
+import { useState } from "react"
 
 import Header from "~components/Header"
 import Modal from "~components/Modal"
 import Suscription from "~components/Suscription"
+import useGetControlloData from "~hooks/useGetControlloData"
+import useSetControlloData from "~hooks/useSetControlloData"
 
 import "./styles.css"
 
 const IndexPopup = () => {
-  const storage = new Storage()
   const [modal, setModal] = useState({ title: "", action: "", id: -1 })
-  const [controlloData, setControlloData] = useState([])
   const [update, setUpdate] = useState(false)
+  const controlloData = useGetControlloData(update)
 
-  useEffect(() => {
-    async function getControlloData() {
-      setControlloData(await storage.get("controlloData"))
-    }
-
-    getControlloData()
-  }, [update])
-
-  async function del(id: Number) {
+  const del = (id: Number) => {
     let aux = []
 
     for (let i = 0; i < controlloData.length; i++) {
@@ -31,8 +22,7 @@ const IndexPopup = () => {
       }
     }
 
-    await storage.set("controlloData", aux)
-    setControlloData(aux)
+    useSetControlloData(aux)
     setUpdate(!update)
   }
 
