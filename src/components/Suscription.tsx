@@ -75,7 +75,7 @@ const Suscription = ({ del, edit, data, id }) => {
         <div className="flex justify-center gap-3 items-center">
           <p className="text-sm font-medium">{formatDate(data.date)}</p>
           <div className="dropdown dropdown-hover dropdown-left">
-            <label tabIndex={id}>
+            <label tabIndex={id} className="hover:cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
