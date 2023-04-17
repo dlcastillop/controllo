@@ -33,7 +33,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
         date: controlloData[id].date
       })
     }
-  }, [id])
+  }, [controlloData])
 
   const todayStr = () => {
     const newDate = new Date()
