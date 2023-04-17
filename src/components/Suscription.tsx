@@ -70,7 +70,9 @@ const Suscription = ({ del, edit, data, id }) => {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium truncate">{data.service}</p>
-          <p className="text-sm truncate">{`$${data.amount}/${data.frecuency}`}</p>
+          <p className="text-sm truncate">{`$${data.amount}/${
+            data.frecuency === "monthly" ? "month" : "year"
+          }`}</p>
         </div>
         <div className="flex justify-center gap-3 items-center">
           <p className="text-sm font-medium">{formatDate(data.date)}</p>
