@@ -25,7 +25,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
   })
 
   useEffect(() => {
-    if (id !== -1) {
+    if (id >= 0) {
       setValues({
         service: controlloData[id].service,
         amount: controlloData[id].amount,
@@ -60,10 +60,12 @@ const Modal = ({ title, action, id, updateSuscription }) => {
   }
 
   const closeModal = () => {
-    $serviceInput.value = ""
-    $amountInput.value = ""
-    $frecuencyInput.value = "monthly"
-    $dateInput.value = ""
+    setValues({
+      service: "",
+      amount: "",
+      frecuency: "monthly",
+      date: ""
+    })
     $modal.checked = false
     updateSuscription()
   }
