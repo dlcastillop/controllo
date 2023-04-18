@@ -1,7 +1,7 @@
 {
   "name": "controllo",
   "displayName": "Controllo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Track all your subscriptions in one place",
   "author": "Daniel Castillo",
   "scripts": {
