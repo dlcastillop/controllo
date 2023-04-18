@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import useGetControlloData from "~hooks/useGetControlloData"
 import useSetControlloData from "~hooks/useSetControlloData"
 
-const Modal = ({ title, action, id, updateSuscription }) => {
+const Modal = ({ title, action, id, updateSuscription, random }) => {
   const $serviceInput = document.querySelector(
     "#service-input"
   ) as HTMLInputElement
@@ -16,7 +16,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
   const $dateInput = document.querySelector("#date-input") as HTMLInputElement
   const $modal = document.getElementById("modal") as HTMLInputElement
 
-  const controlloData = useGetControlloData(id)
+  const controlloData = useGetControlloData(random)
   const [values, setValues] = useState({
     service: "",
     amount: "",

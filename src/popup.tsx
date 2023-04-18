@@ -10,7 +10,12 @@ import useSetControlloData from "~hooks/useSetControlloData"
 import "./styles.css"
 
 const IndexPopup = () => {
-  const [modal, setModal] = useState({ title: "", action: "", id: -1 })
+  const [modal, setModal] = useState({
+    title: "",
+    action: "",
+    id: -1,
+    random: Math.random()
+  })
   const [update, setUpdate] = useState(false)
   const controlloData = useGetControlloData(update)
 
@@ -38,7 +43,8 @@ const IndexPopup = () => {
             setModal({
               title: "New service",
               action: "Add",
-              id: -1
+              id: -1,
+              random: Math.random()
             })
           }>
           <svg
@@ -64,7 +70,8 @@ const IndexPopup = () => {
                       setModal({
                         title: "Edit service",
                         action: "Save",
-                        id
+                        id,
+                        random: Math.random()
                       })
                     }
                     key={i.toString()}
@@ -78,6 +85,7 @@ const IndexPopup = () => {
         action={modal.action}
         id={modal.id}
         updateSuscription={() => setUpdate(!update)}
+        random={modal.random}
       />
       <About />
     </div>
