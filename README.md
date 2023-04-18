@@ -1,6 +1,6 @@
 # <img src="./assets/icon.png" width="30" height="30"> Controllo
 
-Controllo is a free extension to track all your subscriptions in one place.
+Controllo is a free browser extension to track all your subscriptions in one place.
 
 ## Features
 
