@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const Suscription = ({ del, edit, data, id }) => {
+const Suscription = ({ del, edit, data, id, random }) => {
   const [color, setColor] = useState("")
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Suscription = ({ del, edit, data, id }) => {
     } else {
       setColor("bg-success text-success-content")
     }
-  }, [id])
+  }, [random])
 
   const formatDate = (date) => {
     let formatedDate = ""

@@ -75,6 +75,7 @@ const IndexPopup = () => {
                       })
                     }
                     key={i.toString()}
+                    random={Math.random()}
                   />
                 )
               })}
