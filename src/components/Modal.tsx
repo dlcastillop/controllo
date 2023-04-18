@@ -127,7 +127,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
               <input
                 type="text"
                 name="service"
-                placeholder="What is the service name?"
+                placeholder="What is the name of the service?"
                 className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 id="service-input"
                 value={values.service}
@@ -137,7 +137,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
               />
               <label className="label hidden p-0.5" id="service-label">
                 <span className="label-text-alt text-red-600">
-                  Introduce the service name
+                  Introduce the name of the service
                 </span>
               </label>
             </div>
@@ -145,7 +145,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
             <div>
               <input
                 type="number"
-                placeholder="How much you pay?"
+                placeholder="How much do you pay?"
                 className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
                 min={0}
                 id="amount-input"
@@ -156,7 +156,7 @@ const Modal = ({ title, action, id, updateSuscription }) => {
               />
               <label className="label hidden p-0.5" id="amount-label">
                 <span className="label-text-alt text-red-600">
-                  Introduce how much you pay
+                  Introduce how much do you pay
                 </span>
               </label>
             </div>
