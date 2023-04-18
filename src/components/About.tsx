@@ -28,8 +28,8 @@ const About = () => {
             </a>
           </p>
           <p className="text-base">
-            Developer:{" "}
-            <a target="_blank" className="link" href="https:dlcastillop.com">
+            Author:{" "}
+            <a target="_blank" className="link" href="https://dlcastillop.com">
               Daniel Castillo
             </a>
           </p>
