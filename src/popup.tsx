@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import About from "~components/About"
 import Header from "~components/Header"
 import Modal from "~components/Modal"
 import Suscription from "~components/Suscription"
@@ -78,6 +79,7 @@ const IndexPopup = () => {
         id={modal.id}
         updateSuscription={() => setUpdate(!update)}
       />
+      <About />
     </div>
   )
 }
