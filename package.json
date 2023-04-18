@@ -2,7 +2,7 @@
   "name": "controllo",
   "displayName": "Controllo",
   "version": "0.0.1",
-  "description": "A basic Plasmo extension.",
+  "description": "Track all your subscriptions in one place",
   "author": "Daniel Castillo",
   "scripts": {
     "dev": "plasmo dev",
