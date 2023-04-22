@@ -11,6 +11,11 @@ Controllo is a free browser extension to track all your subscriptions in one pla
   - 🟨 Yellow if less than 30 days left
   - 🟩 Green if there are more than 30 days
 
+## Where you can download it?
+
+- 🎁 [Chrome](https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif)
+- 🎁 [Firefox](https://addons.mozilla.org/es/firefox/addon/controllo/)
+
 ## Contributions
 
 Suggestions and pull requests are welcomed! Please read the [CONTRIBUTING.md](https://github.com/dlcastillop/controllo/blob/main/CONTRIBUTING.md) file before contributing.
