@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 
+import useGetControlloSettings from "~hooks/useGetControlloSettings"
+
 const Suscription = ({ del, edit, data, id, random }) => {
   const [color, setColor] = useState("")
+  const controlloSettings = useGetControlloSettings()
+  const [daysText, setDaysText] = useState("")
 
   useEffect(() => {
     const newDate = new Date()
@@ -11,9 +15,20 @@ const Suscription = ({ del, edit, data, id, random }) => {
       (newDate.getMonth() + 1) +
       "-" +
       newDate.getDate()
-    const diffInDays =
+    const diffInDays = Math.ceil(
       (new Date(data.date).getTime() - new Date(today).getTime()) /
-      (1000 * 60 * 60 * 24)
+        (1000 * 60 * 60 * 24)
+    )
+
+    if (diffInDays < 0) {
+      setDaysText(`Deadline was ${diffInDays * -1} days ago`)
+    } else if (diffInDays === 0) {
+      setDaysText(`You have to pay today`)
+    } else if (diffInDays === 1) {
+      setDaysText(`1 day left`)
+    } else {
+      setDaysText(`${diffInDays} days left`)
+    }
 
     if (diffInDays <= 7) {
       setColor("bg-error text-error-content")
@@ -75,7 +90,11 @@ const Suscription = ({ del, edit, data, id, random }) => {
           }`}</p>
         </div>
         <div className="flex justify-center gap-3 items-center">
-          <p className="text-sm font-medium">{formatDate(data.date)}</p>
+          <p className="text-sm font-medium">
+            {controlloSettings.showPaymentDate
+              ? formatDate(data.date)
+              : daysText}
+          </p>
           <div className="dropdown dropdown-hover dropdown-left">
             <label tabIndex={id} className="hover:cursor-pointer">
               <svg

@@ -1,4 +1,9 @@
+import useGetControlloSettings from "~hooks/useGetControlloSettings"
+import useSetControlloSettings from "~hooks/useSetControlloSettings"
+
 const Settings = () => {
+  const controlloSettings = useGetControlloSettings()
+
   return (
     <>
       <input type="checkbox" id="setting" className="modal-toggle visible" />
@@ -14,7 +19,16 @@ const Settings = () => {
           <div className="form-control">
             <label className="cursor-pointer label">
               <span className="label-text text-base">Show payment date</span>
-              <input type="checkbox" className="toggle toggle-primary" />
+              <input
+                type="checkbox"
+                className="toggle toggle-primary"
+                checked={controlloSettings.showPaymentDate}
+                onChange={() =>
+                  useSetControlloSettings({
+                    showPaymentDate: !controlloSettings.showPaymentDate
+                  })
+                }
+              />
             </label>
           </div>
         </div>
