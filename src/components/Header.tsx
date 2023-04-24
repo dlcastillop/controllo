@@ -12,7 +12,7 @@ const Header = () => {
           <span>Controllo</span>
         </a>
         <div className="flex gap-3">
-          <label htmlFor="about-modal" className="hover:cursor-pointer">
+          <label htmlFor="setting" className="hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

@@ -3,6 +3,7 @@ import { useState } from "react"
 import About from "~components/About"
 import Header from "~components/Header"
 import Modal from "~components/Modal"
+import Settings from "~components/Settings"
 import Suscription from "~components/Suscription"
 import useGetControlloData from "~hooks/useGetControlloData"
 import useSetControlloData from "~hooks/useSetControlloData"
@@ -88,6 +89,7 @@ const IndexPopup = () => {
         updateSuscription={() => setUpdate(!update)}
         random={modal.random}
       />
+      <Settings />
       <About />
     </div>
   )
