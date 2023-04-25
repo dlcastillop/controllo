@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import About from "~components/About"
+import Analytics from "~components/Analytics"
 import Header from "~components/Header"
 import Modal from "~components/Modal"
 import Settings from "~components/Settings"
@@ -108,6 +109,7 @@ const IndexPopup = () => {
       />
       <Settings />
       <About />
+      <Analytics />
     </div>
   )
 }
