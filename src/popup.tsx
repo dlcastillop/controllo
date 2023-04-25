@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import About from "~components/About"
 import Header from "~components/Header"
@@ -19,6 +19,11 @@ const IndexPopup = () => {
   })
   const [update, setUpdate] = useState(false)
   const controlloData = useGetControlloData(update)
+  const [controlloDataTemp, setControlloDataTemp] = useState([])
+
+  useEffect(() => {
+    setControlloDataTemp([...controlloData])
+  }, [controlloData])
 
   const del = (id: Number) => {
     let aux = []
@@ -31,6 +36,12 @@ const IndexPopup = () => {
 
     useSetControlloData(aux)
     setUpdate(!update)
+  }
+
+  const search = (text: string) => {
+    return controlloData.filter((el) => {
+      return el.service.toLowerCase().includes(text.toLowerCase())
+    })
   }
 
   return (
@@ -58,10 +69,16 @@ const IndexPopup = () => {
             <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
           </svg>
         </label>
+        <input
+          type="text"
+          placeholder="Search..."
+          className="input input-bordered input-sm"
+          onChange={(e) => setControlloDataTemp(search(e.target.value))}
+        />
         <ul className="flex flex-col items-center gap-5 w-full">
-          {typeof controlloData === "undefined"
+          {typeof controlloDataTemp === "undefined"
             ? undefined
-            : controlloData.map((el: Object, i: Number) => {
+            : controlloDataTemp.map((el: Object, i: Number) => {
                 return (
                   <Suscription
                     data={el}
