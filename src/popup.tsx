@@ -23,7 +23,7 @@ const IndexPopup = () => {
   const [controlloDataTemp, setControlloDataTemp] = useState([])
 
   useEffect(() => {
-    setControlloDataTemp([...controlloData])
+    if (controlloData !== undefined) setControlloDataTemp([...controlloData])
   }, [controlloData])
 
   const del = (id: Number) => {
