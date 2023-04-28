@@ -13,7 +13,7 @@ Controllo is a free browser extension to track all your subscriptions in one pla
 
 ## Where you can download it?
 
-- 🎁 [Chrome](https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif)
+- 🎁 [Chrome, Opera and Brave](https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif)
 - 🎁 [Firefox](https://addons.mozilla.org/es/firefox/addon/controllo/)
 - 🎁 [Edge](https://microsoftedge.microsoft.com/addons/detail/controllo/hepodmbgelammobllblgaindjhahghgj)
 
