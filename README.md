@@ -17,6 +17,16 @@ Controllo is a free browser extension to track all your subscriptions in one pla
 - 🎁 [Firefox](https://addons.mozilla.org/es/firefox/addon/controllo/)
 - 🎁 [Edge](https://microsoftedge.microsoft.com/addons/detail/controllo/hepodmbgelammobllblgaindjhahghgj)
 
+## How to support this project?
+
+You can support Controllo by:
+
+1. Leaving a star on this repo
+2. Rating the extension on the [Chrome Web Store](https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif), [Firefox Browser Add-Ons](https://addons.mozilla.org/es/firefox/addon/controllo/) and [Edge Plugins](https://microsoftedge.microsoft.com/addons/detail/controllo/hepodmbgelammobllblgaindjhahghgj)
+3. Sharing the extension with others
+
+Thank you!
+
 ## Contributions
 
 Suggestions and pull requests are welcomed! Please read the [CONTRIBUTING.md](https://github.com/dlcastillop/controllo/blob/main/CONTRIBUTING.md) file before contributing.
