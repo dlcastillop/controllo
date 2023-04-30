@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import useGetControlloSettings from "~hooks/useGetControlloSettings"
 
-const Suscription = ({ del, edit, data, id, random }) => {
+const Subscription = ({ del, edit, data, id, random }) => {
   const [color, setColor] = useState("")
   const controlloSettings = useGetControlloSettings()
   const [daysText, setDaysText] = useState("")
@@ -127,4 +127,4 @@ const Suscription = ({ del, edit, data, id, random }) => {
   )
 }
 
-export default Suscription
+export default Subscription

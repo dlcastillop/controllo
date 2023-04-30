@@ -5,7 +5,7 @@ import Analytics from "~components/Analytics"
 import Header from "~components/Header"
 import Modal from "~components/Modal"
 import Settings from "~components/Settings"
-import Suscription from "~components/Suscription"
+import Subscription from "~components/Subscription"
 import useGetControlloData from "~hooks/useGetControlloData"
 import useSetControlloData from "~hooks/useSetControlloData"
 
@@ -81,7 +81,7 @@ const IndexPopup = () => {
             ? undefined
             : controlloDataTemp.map((el: Object, i: Number) => {
                 return (
-                  <Suscription
+                  <Subscription
                     data={el}
                     id={i}
                     del={(id: Number) => del(id)}
