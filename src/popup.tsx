@@ -109,7 +109,7 @@ const IndexPopup = () => {
       />
       <Settings />
       <About />
-      <Analytics />
+      <Analytics random={Math.random()} />
     </div>
   )
 }
