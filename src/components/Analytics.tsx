@@ -40,7 +40,7 @@ const Analytics = ({ random }) => {
               ⬛ You have 0 expired subscriptions
             </li>
             <li className="flex items-center">
-              🟥 You have to pay 0 subscriptions in less than 7 dayss
+              🟥 You have to pay 0 subscriptions in less than 7 days
             </li>
             <li className="flex items-center">
               🟨 You have to pay 0 subscriptions in less than 30 days
