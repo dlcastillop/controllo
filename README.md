@@ -4,8 +4,8 @@ Controllo is a free browser extension to track all your subscriptions in one pla
 
 ## Features
 
-- ✅ Add, edit and delete your suscriptions
-- ✅ Set the name, how much you pay, the payment frecuency and the date of the next payment of each suscription
+- ✅ Add, edit and delete your subscriptions
+- ✅ Set the name, how much you pay, the payment frecuency and the date of the next payment of each subscription
 - ✅ Color code to alert how much time is left for the next payment date:
   - 🟥 Red if less than 7 days left
   - 🟨 Yellow if less than 30 days left
