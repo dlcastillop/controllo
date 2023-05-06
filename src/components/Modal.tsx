@@ -23,6 +23,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     frecuency: "monthly",
     date: ""
   })
+  const [tod, setTod] = useState("")
 
   useEffect(() => {
     if (id >= 0) {
@@ -37,12 +38,25 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
 
   const todayStr = () => {
     const newDate = new Date()
-    const today =
-      newDate.getFullYear() +
-      "-0" +
-      (newDate.getMonth() + 1) +
-      "-" +
-      newDate.getDate()
+    let today = ""
+    today = newDate.getFullYear() + "-"
+
+    if (newDate.getMonth() + 1 >= 10) {
+      today += newDate.getMonth() + 1
+    } else {
+      today += "0"
+      today += newDate.getMonth() + 1
+    }
+
+    today += "-"
+
+    if (newDate.getDate() >= 10) {
+      today += newDate.getDate()
+    } else {
+      today += "0"
+      today += newDate.getDate()
+    }
+    console.log(today)
 
     return today
   }
