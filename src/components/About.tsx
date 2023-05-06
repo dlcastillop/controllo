@@ -29,7 +29,10 @@ const About = () => {
           </p>
           <p className="text-base">
             Author:{" "}
-            <a target="_blank" className="link" href="https://dlcastillop.com">
+            <a
+              target="_blank"
+              className="link"
+              href="https://twitter.com/dlcastillop">
               Daniel Castillo
             </a>
           </p>

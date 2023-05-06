@@ -32,10 +32,12 @@ const Analytics = ({ random }) => {
             ✕
           </label>
           <ul className="space-y-3 list-inside text-base">
-            <li className="flex items-center">{`💵 You pay $${monthlyPay} monthly`}</li>
-            <li className="flex items-center">{`💸 You pay $${
+            <li className="flex items-center">{`💵 You pay $${monthlyPay.toFixed(
+              2
+            )} monthly`}</li>
+            <li className="flex items-center">{`💸 You pay $${(
               monthlyPay * 12
-            } yearly`}</li>
+            ).toFixed(2)} yearly`}</li>
             {/* <li className="flex items-center">
               ⬛ You have 0 expired subscriptions
             </li>
