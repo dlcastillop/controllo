@@ -40,9 +40,11 @@ const IndexPopup = () => {
   }
 
   const search = (text: string) => {
-    return controlloData.filter((el) => {
-      return el.service.toLowerCase().includes(text.toLowerCase())
-    })
+    if (controlloData !== undefined) {
+      return controlloData.filter((el) => {
+        return el.service.toLowerCase().includes(text.toLowerCase())
+      })
+    }
   }
 
   return (
