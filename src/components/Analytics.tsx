@@ -3,11 +3,35 @@ import { useEffect, useState } from "react"
 import useGetControlloData from "~hooks/useGetControlloData"
 
 const Analytics = ({ random }) => {
+  const daysLeft = (subscription) => {
+    const newDate = new Date()
+    const today: string =
+      newDate.getFullYear() +
+      "-" +
+      (newDate.getMonth() + 1) +
+      "-" +
+      newDate.getDate()
+    return Math.ceil(
+      (new Date(subscription.date).getTime() - new Date(today).getTime()) /
+        (1000 * 60 * 60 * 24)
+    )
+  }
+
   const controlloData = useGetControlloData(random)
   const [monthlyPay, setMonthlyPay] = useState(0)
+  const [totalDaysLeft, setTotalDaysLeft] = useState({
+    overdue: 0,
+    less7: 0,
+    less30: 0,
+    more30: 0
+  })
 
   useEffect(() => {
     let aux = 0
+    let overdue = 0
+    let less7 = 0
+    let less30 = 0
+    let more30 = 0
 
     for (let i = 0; i < controlloData.length; i++) {
       if (controlloData[i].frecuency === "monthly") {
@@ -15,9 +39,25 @@ const Analytics = ({ random }) => {
       } else {
         aux += parseFloat(controlloData[i].amount) / 12
       }
+
+      if (daysLeft(controlloData[i]) < 0) {
+        overdue++
+      } else if (daysLeft(controlloData[i]) < 7) {
+        less7++
+      } else if (daysLeft(controlloData[i]) < 30) {
+        less30++
+      } else {
+        more30++
+      }
     }
 
     setMonthlyPay(aux)
+    setTotalDaysLeft({
+      overdue,
+      less7,
+      less30,
+      more30
+    })
   }, [controlloData])
 
   return (
@@ -38,18 +78,18 @@ const Analytics = ({ random }) => {
             <li className="flex items-center">{`💸 You pay $${(
               monthlyPay * 12
             ).toFixed(2)} yearly`}</li>
-            {/* <li className="flex items-center">
-              ⬛ You have 0 expired subscriptions
+            <li className="flex items-center">
+              {`⬛ You have ${totalDaysLeft.overdue} expired subscriptions`}
             </li>
             <li className="flex items-center">
-              🟥 You have to pay 0 subscriptions in less than 7 days
+              {`🟥 You have to pay ${totalDaysLeft.less7} subscriptions in less than 7 days`}
             </li>
             <li className="flex items-center">
-              🟨 You have to pay 0 subscriptions in less than 30 days
+              {`🟨 You have to pay ${totalDaysLeft.less30} subscriptions in less than 30 days`}
             </li>
             <li className="flex items-center">
-              🟩 You have to pay 0 subscriptions in more than 30 days
-            </li> */}
+              {`🟩 You have to pay ${totalDaysLeft.more30} subscriptions in more than 30 days`}
+            </li>
           </ul>
         </div>
       </div>
