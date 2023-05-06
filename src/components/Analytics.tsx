@@ -18,6 +18,7 @@ const Analytics = ({ random }) => {
   }
 
   const controlloData = useGetControlloData(random)
+  const [controlloDataTemp, setControlloDataTemp] = useState([])
   const [monthlyPay, setMonthlyPay] = useState(0)
   const [totalDaysLeft, setTotalDaysLeft] = useState({
     overdue: 0,
@@ -33,18 +34,20 @@ const Analytics = ({ random }) => {
     let less30 = 0
     let more30 = 0
 
-    for (let i = 0; i < controlloData.length; i++) {
-      if (controlloData[i].frecuency === "monthly") {
-        aux += parseFloat(controlloData[i].amount)
+    if (controlloData !== undefined) setControlloDataTemp([...controlloData])
+
+    for (let i = 0; i < controlloDataTemp.length; i++) {
+      if (controlloDataTemp[i].frecuency === "monthly") {
+        aux += parseFloat(controlloDataTemp[i].amount)
       } else {
-        aux += parseFloat(controlloData[i].amount) / 12
+        aux += parseFloat(controlloDataTemp[i].amount) / 12
       }
 
-      if (daysLeft(controlloData[i]) < 0) {
+      if (daysLeft(controlloDataTemp[i]) < 0) {
         overdue++
-      } else if (daysLeft(controlloData[i]) < 7) {
+      } else if (daysLeft(controlloDataTemp[i]) < 7) {
         less7++
-      } else if (daysLeft(controlloData[i]) < 30) {
+      } else if (daysLeft(controlloDataTemp[i]) < 30) {
         less30++
       } else {
         more30++

@@ -196,9 +196,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
             </div>
           </div>
           <div className="modal-action justify-center">
-            <label
-              className="btn btn-primary rounded normal-case"
-              onClick={handleClick}>
+            <label className="btn btn-primary rounded" onClick={handleClick}>
               {action}
             </label>
           </div>
