@@ -14,28 +14,52 @@ const About = () => {
             ✕
           </label>
           <h3 className="font-bold text-lg mb-5">About</h3>
-          <p className="text-base mb-3">
-            Icon:{" "}
-            <a
-              target="_blank"
-              className="link"
-              href="https://icons8.com/icon/s4MzQ849Sdas/inspection">
-              Inspection
-            </a>{" "}
-            icon by{" "}
-            <a target="_blank" className="link" href="https://icons8.com">
-              Icons8
-            </a>
-          </p>
-          <p className="text-base">
-            Author:{" "}
-            <a
-              target="_blank"
-              className="link"
-              href="https://twitter.com/dlcastillop">
-              Daniel Castillo
-            </a>
-          </p>
+          <div className="text-base flex flex-col gap-3">
+            <p>
+              Controllo is free and open source browser extension to track all
+              your subscriptions in one place.
+            </p>
+            <p>
+              🤝{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://controllo.dlcastillop.com/how-to-support-controllo">
+                How to suport Controllo
+              </a>
+            </p>
+            <p>
+              📖{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://controllo.dlcastillop.com/learn">
+                Learn how to use Controllo
+              </a>
+            </p>
+            <p>
+              ❤️ Made with love by{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://twitter.com/dlcastillop">
+                Daniel Castillo
+              </a>
+            </p>
+            <p>
+              🧩{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://icons8.com/icon/s4MzQ849Sdas/inspection">
+                Inspection
+              </a>{" "}
+              icon by{" "}
+              <a target="_blank" className="link" href="https://icons8.com">
+                Icons8
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </>
