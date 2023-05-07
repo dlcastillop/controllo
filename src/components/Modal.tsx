@@ -23,7 +23,6 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     frecuency: "monthly",
     date: ""
   })
-  const [tod, setTod] = useState("")
 
   useEffect(() => {
     if (id >= 0) {
@@ -56,7 +55,6 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
       today += "0"
       today += newDate.getDate()
     }
-    console.log(today)
 
     return today
   }
