@@ -10,6 +10,8 @@ Controllo is a free browser extension to track all your subscriptions in one pla
   - 🟥 Red if less than 7 days left
   - 🟨 Yellow if less than 30 days left
   - 🟩 Green if there are more than 30 days
+- ✅ Search for an specific subscription
+- ✅ See your analytics
 
 ## Where you can download it?
 
