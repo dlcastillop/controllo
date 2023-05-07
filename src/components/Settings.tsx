@@ -1,8 +1,13 @@
+import { useState } from "react"
+
 import useGetControlloSettings from "~hooks/useGetControlloSettings"
 import useSetControlloSettings from "~hooks/useSetControlloSettings"
 
 const Settings = () => {
   const controlloSettings = useGetControlloSettings()
+  const [controlloSettingsTemp, setControlloSettingsTemp] = useState({
+    ...controlloSettings
+  })
 
   return (
     <>
@@ -23,11 +28,14 @@ const Settings = () => {
                 type="checkbox"
                 className="toggle toggle-primary"
                 checked={controlloSettings.showPaymentDate}
-                onChange={() =>
+                onChange={() => {
                   useSetControlloSettings({
-                    showPaymentDate: !controlloSettings.showPaymentDate
+                    showPaymentDate: !controlloSettingsTemp.showPaymentDate
                   })
-                }
+                  setControlloSettingsTemp({
+                    showPaymentDate: !controlloSettingsTemp.showPaymentDate
+                  })
+                }}
               />
             </label>
           </div>
