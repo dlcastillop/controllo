@@ -1,4 +1,53 @@
+import { useEffect } from "react"
+
 const About = () => {
+  const detectBrowser = () => {
+    let ua = navigator.userAgent
+    let tem
+    let M =
+      ua.match(
+        /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+      ) || []
+    if (/trident/i.test(M[1])) {
+      tem = /\brv[ :]+(\d+)/g.exec(ua) || []
+      return "IE " + (tem[1] || "")
+    }
+    if (M[1] === "Chrome") {
+      tem = ua.match(/\b(OPR|Edg)\/(\d+)/)
+      if (tem != null) return tem.slice(1).join(" ").replace("OPR", "Opera")
+    }
+    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, "-?"]
+    if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1])
+    return M.join(" ")
+  }
+
+  useEffect(() => {
+    const userBrowser = detectBrowser() as string
+    const $a = document.querySelector("#rate-extension")
+
+    if (userBrowser.includes("Chrome") || userBrowser.includes("Opera")) {
+      $a.setAttribute(
+        "href",
+        "https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif"
+      )
+    } else if (userBrowser.includes("Firefox")) {
+      $a.setAttribute(
+        "href",
+        "https://addons.mozilla.org/es/firefox/addon/controllo/"
+      )
+    } else if (userBrowser.includes("Edg")) {
+      $a.setAttribute(
+        "href",
+        "https://microsoftedge.microsoft.com/addons/detail/hepodmbgelammobllblgaindjhahghgj"
+      )
+    } else {
+      $a.setAttribute(
+        "href",
+        "https://chrome.google.com/webstore/detail/controllo/bodddijlpmhpjplaajoigmejoglnjhif"
+      )
+    }
+  })
+
   return (
     <>
       <input
@@ -20,12 +69,9 @@ const About = () => {
               your subscriptions in one place.
             </p>
             <p>
-              🤝{" "}
-              <a
-                target="_blank"
-                className="link"
-                href="https://controllo.dlcastillop.com/how-to-support-controllo">
-                How to suport Controllo
+              ⭐{" "}
+              <a target="_blank" className="link" href="#" id="rate-extension">
+                Rate the extension
               </a>
             </p>
             <p>
