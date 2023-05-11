@@ -14,6 +14,9 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     "#frecuency-input"
   ) as HTMLInputElement
   const $dateInput = document.querySelector("#date-input") as HTMLInputElement
+  const $serviceLinkInput = document.querySelector(
+    "#link-input"
+  ) as HTMLInputElement
   const $modal = document.getElementById("modal") as HTMLInputElement
 
   const controlloData = useGetControlloData(random)
@@ -21,7 +24,8 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     service: "",
     amount: "",
     frecuency: "monthly",
-    date: ""
+    date: "",
+    serviceLink: ""
   })
 
   useEffect(() => {
@@ -30,7 +34,8 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
         service: controlloData[id].service,
         amount: controlloData[id].amount,
         frecuency: controlloData[id].frecuency,
-        date: controlloData[id].date
+        date: controlloData[id].date,
+        serviceLink: controlloData[id].serviceLink
       })
     }
   }, [controlloData])
@@ -71,12 +76,32 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     }
   }
 
+  const checkLink = () => {
+    const urlRegex =
+      /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?$/
+    const $serviceLinkLabel = document.querySelector(
+      "#link-label"
+    ) as HTMLInputElement
+    const isValidUrl = urlRegex.test($serviceLinkInput.value)
+
+    if ($serviceLinkInput.value !== "" && !isValidUrl) {
+      $serviceLinkLabel.classList.remove("hidden")
+      $serviceLinkLabel.classList.add("block")
+      return false
+    } else {
+      $serviceLinkLabel.classList.remove("block")
+      $serviceLinkLabel.classList.add("hidden")
+      return true
+    }
+  }
+
   const closeModal = () => {
     setValues({
       service: "",
       amount: "",
       frecuency: "monthly",
-      date: ""
+      date: "",
+      serviceLink: ""
     })
     $modal.checked = false
     updateSuscription()
@@ -87,6 +112,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     const amount = $amountInput.value
     const frecuency = $frecuencyInput.value
     const date = $dateInput.value
+    const serviceLink = $serviceLinkInput.value
 
     const $serviceLabel = document.querySelector(
       "#service-label"
@@ -99,19 +125,26 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     const isService = checkInput(service, $serviceLabel)
     const isAmount = checkInput(amount, $amountLabel)
     const isDate = checkInput(date, $dateLabel)
+    const isValidURL = checkLink()
 
-    if (isService && isAmount && isDate && action === "Add") {
+    if (isService && isAmount && isDate && isValidURL && action === "Add") {
       if (controlloData === undefined) {
-        useSetControlloData([{ service, amount, frecuency, date }])
+        useSetControlloData([{ service, amount, frecuency, date, serviceLink }])
       } else {
         useSetControlloData([
           ...controlloData,
-          { service, amount, frecuency, date }
+          { service, amount, frecuency, date, serviceLink }
         ])
       }
 
       closeModal()
-    } else if (isService && isAmount && isDate && action === "Save") {
+    } else if (
+      isService &&
+      isAmount &&
+      isDate &&
+      isValidURL &&
+      action === "Save"
+    ) {
       let aux = []
 
       for (let i = 0; i < controlloData.length; i++) {
@@ -174,6 +207,25 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
               <label className="label hidden p-0.5" id="amount-label">
                 <span className="label-text-alt text-red-600">
                   Introduce how much do you pay
+                </span>
+              </label>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="link"
+                placeholder="What is the link of the service?"
+                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                id="link-input"
+                value={values.serviceLink}
+                onChange={(e) =>
+                  setValues({ ...values, serviceLink: e.target.value })
+                }
+              />
+              <label className="label hidden p-0.5" id="link-label">
+                <span className="label-text-alt text-red-600">
+                  Introduce a valid URL
                 </span>
               </label>
             </div>

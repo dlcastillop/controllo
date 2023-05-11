@@ -109,6 +109,13 @@ const Subscription = ({ del, edit, data, id, random }) => {
             <ul
               tabIndex={id}
               className="dropdown-content menu p-2 shadow bg-neutral text-neutral-content rounded text-sm">
+              {data.serviceLink !== "" ? (
+                <li>
+                  <a href={data.serviceLink} target="_blank">
+                    Pay
+                  </a>
+                </li>
+              ) : undefined}
               <li>
                 <label htmlFor="modal" onClick={() => edit(id)}>
                   Edit
