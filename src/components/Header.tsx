@@ -1,4 +1,4 @@
-import logoImg from "data-base64:~assets/icon.png"
+import logoImg from "data-base64:~assets/icon.svg"
 
 const Header = () => {
   return (
@@ -8,8 +8,7 @@ const Header = () => {
           className="text-xl font-bold flex gap-1.5 items-center"
           href="https://controllo.dlcastillop.com"
           target="_blank">
-          <img src={logoImg} alt="Logo of Controllo" className="w-7 h-7" />
-          <span>Controllo</span>
+          <img src={logoImg} alt="Logo of Controllo" className="w-28" />
         </a>
         <div className="flex gap-3">
           <label htmlFor="analytics" className="hover:cursor-pointer">
