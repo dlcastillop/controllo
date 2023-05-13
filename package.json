@@ -6,8 +6,9 @@
   "author": "Daniel Castillo",
   "scripts": {
     "dev": "plasmo dev",
-    "build": "plasmo build",
-    "package": "plasmo package"
+    "chrome": "plasmo build --target=chrome-mv3",
+    "firefox": "plasmo build --target=firefox-mv2",
+    "edge": "plasmo build --target=edge-mv3"
   },
   "dependencies": {
     "@plasmohq/storage": "^1.5.0",
