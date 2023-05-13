@@ -48,7 +48,7 @@ const IndexPopup = () => {
   }
 
   return (
-    <div className="w-96 h-96 max-h-96 overflow-y-auto">
+    <div className="w-96 h-96 max-h-96 overflow-y-auto bg-base-100 text-primary">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
         <Header />
         <label
@@ -68,14 +68,14 @@ const IndexPopup = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="text-white">
+            className="text-primary-content">
             <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
           </svg>
         </label>
         <input
           type="text"
           placeholder="Search..."
-          className="input input-bordered input-sm"
+          className="input input-bordered input-primary text-base-content placeholder-base-content input-sm"
           onChange={(e) => setControlloDataTemp(search(e.target.value))}
         />
         <ul className="flex flex-col items-center gap-5 w-full">

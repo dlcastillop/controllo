@@ -2,8 +2,8 @@ import logoImg from "data-base64:~assets/icon.png"
 
 const Header = () => {
   return (
-    <header className="w-full text-primary-content">
-      <div className="bg-base-100 mt-3 mb-2 flex items-center justify-between">
+    <header className="w-full">
+      <div className="mt-3 mb-2 flex items-center justify-between">
         <a
           className="text-xl font-bold flex gap-1.5 items-center"
           href="https://controllo.dlcastillop.com"
@@ -46,7 +46,7 @@ const Header = () => {
           </label>
         </div>
       </div>
-      <hr className="h-px border-0 bg-primary-content" />
+      <hr className="h-px border-0 bg-primary" />
     </header>
   )
 }

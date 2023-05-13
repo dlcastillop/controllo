@@ -31,11 +31,11 @@ const Subscription = ({ del, edit, data, id, random }) => {
     }
 
     if (diffInDays <= 7) {
-      setColor("bg-error text-error-content")
+      setColor("bg-error")
     } else if (diffInDays <= 30) {
-      setColor("bg-warning text-warning-content")
+      setColor("bg-warning")
     } else {
-      setColor("bg-success text-success-content")
+      setColor("bg-success")
     }
   }, [random])
 
@@ -79,7 +79,7 @@ const Subscription = ({ del, edit, data, id, random }) => {
   return (
     <li
       className={
-        "w-full p-3 h-16 rounded hover:scale-105 ease-in-out duration-500 " +
+        "w-full p-3 h-16 rounded hover:scale-105 ease-in-out duration-500 text-black " +
         color
       }>
       <div className="flex items-center justify-between">
