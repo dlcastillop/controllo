@@ -92,19 +92,6 @@ const About = () => {
                 Daniel Castillo
               </a>
             </p>
-            <p>
-              🧩{" "}
-              <a
-                target="_blank"
-                className="link"
-                href="https://icons8.com/icon/s4MzQ849Sdas/inspection">
-                Inspection
-              </a>{" "}
-              icon by{" "}
-              <a target="_blank" className="link" href="https://icons8.com">
-                Icons8
-              </a>
-            </p>
           </div>
         </div>
       </div>

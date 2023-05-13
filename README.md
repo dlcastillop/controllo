@@ -35,4 +35,4 @@ Suggestions and pull requests are welcomed! Please read the [CONTRIBUTING.md](ht
 
 ## Contributors
 
-[<img src="./readme_files/hallwayAD_logo.png" width="150" height="150">](https://linktr.ee/hallwayAD)
+[<img src="./readme_files/hallwayAD_logo.png">](https://linktr.ee/hallwayAD)
