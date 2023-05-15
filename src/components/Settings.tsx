@@ -12,7 +12,7 @@ const Settings = () => {
   return (
     <>
       <input type="checkbox" id="setting" className="modal-toggle visible" />
-      <div className="modal rounded">
+      <div className="modal rounded text-sm">
         <div className="modal-box bg-neutral text-neutral-content">
           <h3 className="font-bold text-lg mb-5">Settings</h3>
           <label
@@ -23,7 +23,9 @@ const Settings = () => {
 
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text text-base">Show payment date</span>
+              <span className="label-text text-neutral-content">
+                Show payment date
+              </span>
               <input
                 type="checkbox"
                 className="toggle toggle-primary"
