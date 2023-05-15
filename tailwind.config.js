@@ -6,6 +6,11 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Gotham Rounded"]
+    },
+    fontWeight: {
+      light: "300",
+      normal: "350",
+      medium: "400"
     }
   },
   plugins: [require("daisyui")],

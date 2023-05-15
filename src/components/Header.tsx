@@ -5,7 +5,7 @@ const Header = () => {
     <header className="w-full">
       <div className="mt-3 mb-2 flex items-center justify-between">
         <a
-          className="text-xl font-bold flex gap-1.5 items-center"
+          className="text-xl flex gap-1.5 items-center"
           href="https://controllo.dlcastillop.com"
           target="_blank">
           <img src={logoImg} alt="Logo of Controllo" className="w-7 h-7" />

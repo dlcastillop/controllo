@@ -62,7 +62,7 @@ const About = () => {
             className="btn btn-sm btn-circle absolute right-2 top-2">
             ✕
           </label>
-          <h3 className="font-bold text-lg mb-5">About</h3>
+          <h3 className="font-medium text-lg mb-5">About</h3>
           <div className="text-base flex flex-col gap-3">
             <p>
               Controllo is free and open source browser extension to track all
