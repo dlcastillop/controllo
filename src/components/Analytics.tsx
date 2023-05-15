@@ -45,9 +45,9 @@ const Analytics = ({ random }) => {
 
       if (daysLeft(controlloDataTemp[i]) < 0) {
         overdue++
-      } else if (daysLeft(controlloDataTemp[i]) < 7) {
+      } else if (daysLeft(controlloDataTemp[i]) <= 7) {
         less7++
-      } else if (daysLeft(controlloDataTemp[i]) < 30) {
+      } else if (daysLeft(controlloDataTemp[i]) <= 30) {
         less30++
       } else {
         more30++
