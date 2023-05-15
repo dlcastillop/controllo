@@ -178,7 +178,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
                 type="text"
                 name="service"
                 placeholder="What is the name of the service?"
-                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                className="input input-bordered input-primary input-md w-full max-w-xs bg-neutral-focus text-neutral-content placeholder:text-neutral-content"
                 id="service-input"
                 value={values.service}
                 onChange={(e) =>
@@ -186,7 +186,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
                 }
               />
               <label className="label hidden p-0.5" id="service-label">
-                <span className="label-text-alt text-red-600">
+                <span className="label-text-alt text-error">
                   Introduce the name of the service
                 </span>
               </label>
@@ -196,7 +196,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
               <input
                 type="number"
                 placeholder="How much do you pay?"
-                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                className="input input-bordered input-primary input-md w-full max-w-xs bg-neutral-focus text-neutral-content placeholder:text-neutral-content"
                 min={0}
                 id="amount-input"
                 value={values.amount}
@@ -205,7 +205,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
                 }
               />
               <label className="label hidden p-0.5" id="amount-label">
-                <span className="label-text-alt text-red-600">
+                <span className="label-text-alt text-error">
                   Introduce how much do you pay
                 </span>
               </label>
@@ -216,7 +216,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
                 type="text"
                 name="link"
                 placeholder="What is the link of the service?"
-                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                className="input input-bordered input-primary input-md w-full max-w-xs bg-neutral-focus text-neutral-content placeholder:text-neutral-content"
                 id="link-input"
                 value={values.serviceLink}
                 onChange={(e) =>
@@ -224,7 +224,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
                 }
               />
               <label className="label hidden p-0.5" id="link-label">
-                <span className="label-text-alt text-red-600">
+                <span className="label-text-alt text-error">
                   Introduce a valid URL
                 </span>
               </label>
@@ -232,7 +232,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
 
             <div>
               <select
-                className="select select-bordered select-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                className="select select-bordered select-primary select-md w-full max-w-xs bg-neutral-focus text-neutral-content"
                 id="frecuency-input"
                 value={values.frecuency}
                 onChange={(e) =>
@@ -246,14 +246,14 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
             <div>
               <input
                 type="date"
-                className="input input-bordered input-primary w-full max-w-xs bg-neutral-focus text-neutral-content"
+                className="input input-bordered input-primary input-md w-full max-w-xs bg-neutral-focus text-neutral-content placeholder:text-neutral-content"
                 min={todayStr()}
                 id="date-input"
                 value={values.date}
                 onChange={(e) => setValues({ ...values, date: e.target.value })}
               />
               <label className="label hidden p-0.5" id="date-label">
-                <span className="label-text-alt text-red-600">
+                <span className="label-text-alt text-error">
                   Introduce when is the next payment
                 </span>
               </label>
