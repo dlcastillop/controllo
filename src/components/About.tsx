@@ -55,7 +55,7 @@ const About = () => {
         id="about-modal"
         className="modal-toggle visible"
       />
-      <div className="modal rounded">
+      <div className="modal rounded text-sm">
         <div className="modal-box bg-neutral text-neutral-content">
           <label
             htmlFor="about-modal"
@@ -63,19 +63,17 @@ const About = () => {
             ✕
           </label>
           <h3 className="font-medium text-lg mb-5">About</h3>
-          <div className="text-base flex flex-col gap-3">
+          <div className="flex flex-col gap-3">
             <p>
               Controllo is free and open source browser extension to track all
               your subscriptions in one place.
             </p>
             <p>
-              ⭐{" "}
               <a target="_blank" className="link" href="#" id="rate-extension">
                 Rate the extension
               </a>
             </p>
             <p>
-              📖{" "}
               <a
                 target="_blank"
                 className="link"
@@ -84,7 +82,7 @@ const About = () => {
               </a>
             </p>
             <p>
-              ❤️ Made with love by{" "}
+              Made with love by{" "}
               <a
                 target="_blank"
                 className="link"
