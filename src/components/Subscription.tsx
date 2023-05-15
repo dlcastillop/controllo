@@ -90,7 +90,7 @@ const Subscription = ({ del, edit, data, id, random }) => {
           }`}</p>
         </div>
         <div className="flex justify-center gap-3 items-center">
-          <p className="text-sm font-medium">
+          <p className="text-sm">
             {controlloSettings.showPaymentDate
               ? formatDate(data.date)
               : daysText}

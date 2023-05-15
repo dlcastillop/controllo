@@ -74,25 +74,27 @@ const Analytics = ({ random }) => {
             className="btn btn-sm btn-circle absolute right-2 top-2">
             ✕
           </label>
-          <ul className="space-y-3 list-inside text-base">
-            <li className="flex items-center">{`💵 You pay $${monthlyPay.toFixed(
+          <ul className="space-y-3 list-inside text-sm">
+            <li className="text-center border-black border-2 rounded-lg px-4 py-2">{`You pay $${monthlyPay.toFixed(
               2
             )} monthly`}</li>
-            <li className="flex items-center">{`💸 You pay $${(
+            <li className="text-center border-black border-2 rounded-lg px-4 py-2">{`You pay $${(
               monthlyPay * 12
             ).toFixed(2)} yearly`}</li>
-            <li className="flex items-center">
-              {`⬛ You have ${totalDaysLeft.overdue} expired subscriptions`}
-            </li>
-            <li className="flex items-center">
-              {`🟥 You have to pay ${totalDaysLeft.less7} subscriptions in less than 7 days`}
-            </li>
-            <li className="flex items-center">
-              {`🟨 You have to pay ${totalDaysLeft.less30} subscriptions in less than 30 days`}
-            </li>
-            <li className="flex items-center">
-              {`🟩 You have to pay ${totalDaysLeft.more30} subscriptions in more than 30 days`}
-            </li>
+            <div className="space-y-3 p-3 bg-base-100 rounded-lg">
+              <li className="text-center border-neutral border-2 rounded-lg px-4 py-2 text-neutral">
+                {`${totalDaysLeft.overdue} expired subscriptions`}
+              </li>
+              <li className="text-center border-error border-2 rounded-lg px-4 py-2 text-error">
+                {`${totalDaysLeft.less7} subscriptions with less than 7 days`}
+              </li>
+              <li className="text-center border-warning border-2 rounded-lg px-4 py-2 text-warning">
+                {`${totalDaysLeft.less30} subscriptions with less than 30 days`}
+              </li>
+              <li className="text-center border-success border-2 rounded-lg px-4 py-2 text-success">
+                {`${totalDaysLeft.more30} subscriptions with more than 30 days`}
+              </li>
+            </div>
           </ul>
         </div>
       </div>
