@@ -77,8 +77,7 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
   }
 
   const checkLink = () => {
-    const urlRegex =
-      /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?$/
+    const urlRegex = /^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?$/
     const $serviceLinkLabel = document.querySelector(
       "#link-label"
     ) as HTMLInputElement
