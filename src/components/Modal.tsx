@@ -25,7 +25,8 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
     amount: "",
     frecuency: "monthly",
     date: "",
-    serviceLink: ""
+    serviceLink: "",
+    payDay: ""
   })
 
   useEffect(() => {
@@ -35,7 +36,8 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
         amount: controlloData[id].amount,
         frecuency: controlloData[id].frecuency,
         date: controlloData[id].date,
-        serviceLink: controlloData[id].serviceLink
+        serviceLink: controlloData[id].serviceLink,
+        payDay: controlloData[id].payDay
       })
     }
   }, [controlloData])
@@ -100,7 +102,8 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
       amount: "",
       frecuency: "monthly",
       date: "",
-      serviceLink: ""
+      serviceLink: "",
+      payDay: ""
     })
     $modal.checked = false
     updateSuscription()
@@ -128,11 +131,27 @@ const Modal = ({ title, action, id, updateSuscription, random }) => {
 
     if (isService && isAmount && isDate && isValidURL && action === "Add") {
       if (controlloData === undefined) {
-        useSetControlloData([{ service, amount, frecuency, date, serviceLink }])
+        useSetControlloData([
+          {
+            service,
+            amount,
+            frecuency,
+            date,
+            serviceLink,
+            payDay: date[8] + date[9]
+          }
+        ])
       } else {
         useSetControlloData([
           ...controlloData,
-          { service, amount, frecuency, date, serviceLink }
+          {
+            service,
+            amount,
+            frecuency,
+            date,
+            serviceLink,
+            payDay: date[8] + date[9]
+          }
         ])
       }
 

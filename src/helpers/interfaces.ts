@@ -4,6 +4,7 @@ interface IControlloData {
   frecuency: string
   date: string
   serviceLink: string
+  payDay: string
 }
 
 export { IControlloData }

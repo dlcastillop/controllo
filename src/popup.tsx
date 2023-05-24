@@ -47,6 +47,94 @@ const IndexPopup = () => {
     }
   }
 
+  const paid = (id: Number) => {
+    let aux = []
+
+    for (let i = 0; i < controlloData.length; i++) {
+      if (i === id) {
+        let year =
+          controlloData[i].date[0] +
+          controlloData[i].date[1] +
+          controlloData[i].date[2] +
+          controlloData[i].date[3]
+        let month = controlloData[i].date[5] + controlloData[i].date[6]
+        let day = controlloData[i].date[8] + controlloData[i].date[9]
+        let isLeapYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
+
+        if (controlloData[i].frecuency === "monthly") {
+          if (month === "01") {
+            if (parseInt(controlloData[i].payDay) > 28 && isLeapYear) {
+              day = "29"
+            } else if (parseInt(controlloData[i].payDay) > 28 && !isLeapYear) {
+              day = "28"
+            } else {
+              day = controlloData[i].payDay
+            }
+            month = "02"
+          } else if (month === "02") {
+            day = controlloData[i].payDay
+            month = "03"
+          } else if (month === "03") {
+            if (parseInt(controlloData[i].payDay) === 31) {
+              day = "30"
+            } else {
+              day = controlloData[i].payDay
+            }
+            month = "04"
+          } else if (month === "04") {
+            day = controlloData[i].payDay
+            month = "05"
+          } else if (month === "05") {
+            if (parseInt(controlloData[i].payDay) === 31) {
+              day = "30"
+            } else {
+              day = controlloData[i].payDay
+            }
+            month = "06"
+          } else if (month === "06") {
+            day = controlloData[i].payDay
+            month = "07"
+          } else if (month === "07") {
+            day = controlloData[i].payDay
+            month = "08"
+          } else if (month === "08") {
+            if (parseInt(controlloData[i].payDay) === 31) {
+              day = "30"
+            } else {
+              day = controlloData[i].payDay
+            }
+            month = "09"
+          } else if (month === "09") {
+            day = controlloData[i].payDay
+            month = "10"
+          } else if (month === "10") {
+            if (parseInt(controlloData[i].payDay) === 31) {
+              day = "30"
+            } else {
+              day = controlloData[i].payDay
+            }
+            month = "11"
+          } else if (month === "11") {
+            day = controlloData[i].payDay
+            month = "12"
+          } else if (month === "12") {
+            day = controlloData[i].payDay
+            month = "01"
+            year = (parseInt(year) + 1).toString()
+          }
+        } else {
+          year = (parseInt(year) + 1).toString()
+        }
+        aux.push({ ...controlloData[i], date: year + "-" + month + "-" + day })
+      } else {
+        aux.push(controlloData[i])
+      }
+    }
+
+    useSetControlloData(aux)
+    setUpdate(!update)
+  }
+
   return (
     <div className="w-96 h-96 max-h-96 overflow-y-auto bg-base-100 text-primary font-sans font-normal">
       <div className="w-5/6 flex flex-col gap-5 items-center m-auto">
@@ -87,6 +175,7 @@ const IndexPopup = () => {
                     data={el}
                     id={i}
                     del={(id: Number) => del(id)}
+                    paid={(id: Number) => paid(id)}
                     edit={(id: number) =>
                       setModal({
                         title: "Edit service",

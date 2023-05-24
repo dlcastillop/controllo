@@ -17,6 +17,9 @@ const useGetControlloData = (status) => {
           if (!temp[i].hasOwnProperty("serviceLink")) {
             temp[i].serviceLink = ""
           }
+          if (!temp[i].hasOwnProperty("payDay")) {
+            temp[i].payDay = temp[i].date[8] + temp[i].date[9]
+          }
         }
         setControlloData(temp)
       }
